@@ -104,13 +104,21 @@ export const MarkDotgrid = ({ size = 64, color = "currentColor", style }: MarkPr
   return <svg width={size} height={size} viewBox="0 0 32 32" style={wrap(style)} aria-hidden="true">{dots}</svg>;
 };
 
-export const markVariants = [
-  { id: "crystal",  name: "Crystal",    sub: "hex frame + diamond cut · canonical", Mark: MarkCrystal, exportName: "MarkCrystal" },
-  { id: "sigil",    name: "Sigil",      sub: "chunky bars",                         Mark: MarkSigil,   exportName: "MarkSigil" },
-  { id: "zflake",   name: "Z-Flake",    sub: "the Z of snowztech",                  Mark: MarkZFlake,  exportName: "MarkZFlake" },
-  { id: "asterisk", name: "Asterisk",   sub: "mono-native, typographic",            Mark: MarkAsterisk, exportName: "MarkAsterisk" },
-  { id: "slash",    name: "Slash-Star", sub: "stamped, signature slash",            Mark: MarkSlash,   exportName: "MarkSlash" },
-  { id: "hex",      name: "Hex-Cut",    sub: "negative-space hex tile",             Mark: MarkHex,     exportName: "MarkHex" },
-  { id: "dotgrid",  name: "Dot-Grid",   sub: "pointillist, friendly",               Mark: MarkDotgrid, exportName: "MarkDotgrid" },
-  { id: "glyph",    name: "Glyph S",    sub: "monogram, folded ribbon",             Mark: MarkGlyph,   exportName: "MarkGlyph" },
-] as const;
+export interface MarkVariant {
+  id: string;
+  name: string;
+  sub: string;
+  Mark: React.ComponentType<MarkProps>;
+  exportName: string;
+}
+
+export const markVariants: MarkVariant[] = [
+  { id: "crystal",  name: "Crystal",    sub: "hex frame + diamond cut, canonical", Mark: MarkCrystal,  exportName: "MarkCrystal" },
+  { id: "sigil",    name: "Sigil",      sub: "chunky bars",                        Mark: MarkSigil,    exportName: "MarkSigil" },
+  { id: "zflake",   name: "Z-Flake",    sub: "the Z of snowztech",                 Mark: MarkZFlake,   exportName: "MarkZFlake" },
+  { id: "asterisk", name: "Asterisk",   sub: "mono-native, typographic",           Mark: MarkAsterisk, exportName: "MarkAsterisk" },
+  { id: "slash",    name: "Slash-Star", sub: "stamped, signature slash",           Mark: MarkSlash,    exportName: "MarkSlash" },
+  { id: "hex",      name: "Hex-Cut",    sub: "negative-space hex tile",            Mark: MarkHex,      exportName: "MarkHex" },
+  { id: "dotgrid",  name: "Dot-Grid",   sub: "pointillist, friendly",              Mark: MarkDotgrid,  exportName: "MarkDotgrid" },
+  { id: "glyph",    name: "Glyph S",    sub: "monogram, folded ribbon",            Mark: MarkGlyph,    exportName: "MarkGlyph" },
+];

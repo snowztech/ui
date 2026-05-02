@@ -27,7 +27,7 @@ Full docs and examples: see [`apps/docs`](./apps/docs) or run `pnpm dev`.
 ## Repo layout
 
 ```
-packages/ui     # the published package — @snowztech/ui
+packages/ui     # the published package: @snowztech/ui
 apps/docs       # Next.js docs site with live examples
 ```
 
@@ -51,4 +51,4 @@ pnpm -C packages/ui publish
 
 ## License
 
-MIT — [Lucas Neves Pereira](https://github.com/lucasnevespereira)
+MIT · [Lucas Neves Pereira](https://github.com/lucasnevespereira)

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "@snowztech/ui — design system",
+  title: "@snowztech/ui · design system",
   description: "Terminal-minimal React design system.",
 };
 

@@ -1,12 +1,12 @@
 /* ============================================
-   snowztech / design tokens — terminal minimal
+   snowztech / design tokens (terminal minimal)
    ============================================ */
 
 :root {
   --sn-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --sn-font-sans: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  /* Type scale — mono everywhere, tight */
+  /* Type scale: mono everywhere, tight */
   --sn-text-2xs: 11px;
   --sn-text-xs: 12px;
   --sn-text-sm: 13px;
@@ -22,13 +22,13 @@
   --sn-leading-normal: 1.55;
   --sn-leading-relaxed: 1.75;
 
-  /* spacing — 4px base */
+  /* spacing: 4px base */
   --sn-s-1: 4px;  --sn-s-2: 8px;  --sn-s-3: 12px;
   --sn-s-4: 16px; --sn-s-5: 20px; --sn-s-6: 24px;
   --sn-s-7: 32px; --sn-s-8: 40px; --sn-s-9: 48px;
   --sn-s-10: 64px; --sn-s-11: 80px; --sn-s-12: 96px;
 
-  /* radius — minimal, mostly square */
+  /* radius: minimal, mostly square */
   --sn-r-none: 0;
   --sn-r-xs: 2px;
   --sn-r-sm: 4px;
@@ -40,7 +40,7 @@
   --sn-ease: cubic-bezier(0.2, 0, 0, 1);
 
   /* ============================================
-     COLOR — DARK (default) — pure black, one accent
+     COLOR: DARK (default), pure black, one accent
      ============================================ */
   --sn-bg: #0a0a0a;
   --sn-bg-elev-1: #111111;
@@ -57,7 +57,7 @@
   --sn-fg-faint: #444444;
   --sn-fg-inverse: #0a0a0a;
 
-  /* Accent — pale frost blue, like the reference link color */
+  /* Accent: pale frost blue, like the reference link color */
   --sn-accent: #8ab4f8;
   --sn-accent-hover: #a8c7fa;
   --sn-accent-active: #6c9eed;
@@ -117,7 +117,7 @@ a { color: var(--sn-accent); text-decoration: none; }
 a:hover { color: var(--sn-accent-hover); }
 
 /* ============================================
-   PRIMITIVES — flat, no shadows, no rounded buttons by default
+   PRIMITIVES: flat, no shadows, no rounded buttons by default
    ============================================ */
 .sn-btn {
   display: inline-flex;
@@ -245,7 +245,7 @@ a:hover { color: var(--sn-accent-hover); }
   color: var(--sn-fg-faint);
   user-select: none;
 }
-.sn-prompt::before { content: "—  "; }
+.sn-prompt::before { content: "› "; }
 
 @keyframes sn-spin { to { transform: rotate(360deg); } }
 @keyframes sn-pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }

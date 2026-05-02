@@ -57,4 +57,4 @@ import { ThemeToggle } from "@snowztech/ui/client";
 
 ## License
 
-MIT — Lucas Neves Pereira
+MIT · Lucas Neves Pereira

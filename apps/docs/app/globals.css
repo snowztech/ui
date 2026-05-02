@@ -247,7 +247,7 @@ body {
 .code-block:hover .code-block-actions { opacity: 1; }
 .code-block-actions:focus-within { opacity: 1; }
 
-/* Shiki dual theme — show light or dark based on data-theme on html */
+/* Shiki dual theme: show light or dark based on data-theme on html */
 .shiki, .shiki span { color: var(--shiki-dark) !important; background-color: transparent !important; }
 [data-theme="light"] .shiki, [data-theme="light"] .shiki span { color: var(--shiki-light) !important; }
 .docs-main p > code, .docs-main li > code {

@@ -42,7 +42,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 
         <div className="docs-nav-footer">
           <a
-            href="https://github.com/lucasnevespereira"
+            href="https://github.com/snowztech/ui"
             target="_blank"
             rel="noreferrer"
             className="docs-footer-link"
@@ -61,7 +61,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           </div>
           <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
             <a
-              href="https://github.com/lucasnevespereira"
+              href="https://github.com/snowztech/ui"
               target="_blank"
               rel="noreferrer"
               aria-label="github"
