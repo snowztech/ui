@@ -2,6 +2,9 @@ import * as React from "react";
 import Link from "next/link";
 import { Monogram, MarkCrystal, GithubIcon } from "@snowztech/ui";
 import { ThemeToggle } from "@snowztech/ui/client";
+import pkg from "@snowztech/ui/package.json";
+
+const version = `v${pkg.version}`;
 
 type NavLink = { href: string; label: string; external?: boolean };
 
@@ -32,7 +35,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           <Monogram size={32} mark={MarkCrystal} radius={6} glyphScale={0.6} />
           <div className="docs-brand-text">
             <span className="docs-brand-name">snowztech<span style={{ color: "var(--sn-fg-muted)" }}>/ui</span></span>
-            <span className="docs-brand-version">v0.0.1</span>
+            <span className="docs-brand-version">{version}</span>
           </div>
         </Link>
 
@@ -67,7 +70,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         <header className="docs-topbar">
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
             <span style={{ color: "var(--sn-fg-faint)", fontSize: "var(--sn-text-2xs)" }}>
-              v0.0.1
+              {version}
             </span>
           </div>
           <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
