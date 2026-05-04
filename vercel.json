@@ -3,6 +3,5 @@
   "framework": "nextjs",
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm --filter @snowztech/ui-css --filter @snowztech/ui-js --filter @snowztech/ui build && pnpm --filter docs build",
-  "outputDirectory": "apps/docs/.next",
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- apps/docs packages"
+  "outputDirectory": "apps/docs/.next"
 }
