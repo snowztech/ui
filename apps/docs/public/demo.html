@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>snowztech/ui · static demo</title>
+
+  <!--
+    No bundler. No framework. No JS framework runtime.
+    Just one stylesheet and one (optional) script.
+    Copy these two tags into any HTML file and you're set.
+  -->
+  <link rel="stylesheet" href="/snowztech-ui.css">
+  <script type="module" src="/snowztech-ui.esm.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script>
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light") document.documentElement.setAttribute("data-theme", "light");
+    } catch (e) {}
+  </script>
+
+  <style>
+    /* Page-only chrome. Not part of the design system. */
+    main { max-width: 720px; margin: 64px auto; padding: 0 24px; }
+    h1   { font-size: var(--sn-text-2xl); margin: 0 0 8px; letter-spacing: -0.02em; }
+    .lede { color: var(--sn-fg-muted); margin: 0 0 32px; }
+    h2   { font-size: var(--sn-text-md); margin: 40px 0 12px; }
+    .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="topbar">
+      <span class="sn-meta">snowztech/ui · static demo</span>
+      <button class="sn-theme-toggle" data-sn-theme-toggle aria-label="toggle theme">
+        <span class="sn-theme-toggle__indicator"></span>
+      </button>
+    </div>
+
+    <h1>Hello, static page.</h1>
+    <p class="lede">
+      Every component below is plain HTML. The same classes power the React build.
+      Framework parity is the contract.
+    </p>
+
+    <h2>Buttons</h2>
+    <div class="row">
+      <button class="sn-btn sn-btn--primary">Primary</button>
+      <button class="sn-btn sn-btn--secondary">Secondary</button>
+      <button class="sn-btn sn-btn--ghost">Ghost</button>
+      <button class="sn-btn sn-btn--accent">Accent</button>
+      <button class="sn-btn sn-btn--danger">Danger</button>
+    </div>
+
+    <h2>Badges</h2>
+    <div class="row">
+      <span class="sn-badge">default</span>
+      <span class="sn-badge sn-badge--accent">accent</span>
+      <span class="sn-badge sn-badge--success">ok</span>
+      <span class="sn-badge sn-badge--warning">warn</span>
+      <span class="sn-badge sn-badge--danger">err</span>
+    </div>
+
+    <h2>Status</h2>
+    <div class="row">
+      <span class="sn-pulse sn-pulse--success">
+        <span class="sn-pulse__dot"></span><span>online</span>
+      </span>
+      <span class="sn-pulse sn-pulse--warning">
+        <span class="sn-pulse__dot"></span><span>degraded</span>
+      </span>
+      <span class="sn-pulse sn-pulse--danger">
+        <span class="sn-pulse__dot"></span><span>down</span>
+      </span>
+    </div>
+
+    <h2>Avatars</h2>
+    <div class="row">
+      <span class="sn-avatar sn-avatar--md">DR</span>
+      <span class="sn-avatar sn-avatar--lg sn-avatar--ring">DR</span>
+      <span class="sn-avatar sn-avatar--lg sn-avatar--square">DR</span>
+      <span class="sn-avatar-stack">
+        <span class="sn-avatar sn-avatar--md sn-avatar--ring">A</span>
+        <span class="sn-avatar sn-avatar--md sn-avatar--ring">B</span>
+        <span class="sn-avatar sn-avatar--md sn-avatar--ring">C</span>
+      </span>
+    </div>
+
+    <h2>Mark + monogram</h2>
+    <div class="row">
+      <svg class="sn-mark sn-mark--lg" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+           stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square" aria-hidden="true">
+        <polygon points="16,3 27,9.5 27,22.5 16,29 5,22.5 5,9.5"/>
+        <polygon points="16,9 22,16 16,23 10,16"/>
+        <line x1="16" y1="3" x2="16" y2="9"/>
+        <line x1="16" y1="23" x2="16" y2="29"/>
+      </svg>
+      <span class="sn-monogram sn-monogram--md">
+        <svg class="sn-mark sn-mark--md" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+             stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square" aria-hidden="true">
+          <polygon points="16,3 27,9.5 27,22.5 16,29 5,22.5 5,9.5"/>
+          <polygon points="16,9 22,16 16,23 10,16"/>
+        </svg>
+      </span>
+      <span class="sn-monogram sn-monogram--md sn-monogram--inverse">
+        <svg class="sn-mark sn-mark--md" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+             stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square" aria-hidden="true">
+          <polygon points="16,3 27,9.5 27,22.5 16,29 5,22.5 5,9.5"/>
+          <polygon points="16,9 22,16 16,23 10,16"/>
+        </svg>
+      </span>
+      <span class="sn-wordmark" style="--sn-wordmark-size: 22px">
+        snowztech<span class="sn-wordmark__dot">.</span>
+      </span>
+    </div>
+
+    <h2>Inputs &amp; cards</h2>
+    <input class="sn-input" placeholder="Search…" style="margin-bottom: 12px">
+    <div class="sn-card sn-card--inset">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <strong>API uptime</strong>
+        <span class="sn-badge sn-badge--success">ok</span>
+      </div>
+      <div style="color:var(--sn-fg-muted)">99.98% over 30 days. <kbd class="sn-kbd">⌘K</kbd> to search.</div>
+    </div>
+
+    <h2>Copy button</h2>
+    <p style="color:var(--sn-fg-muted)">Click. JS flips <code>data-copied</code>, CSS swaps the icon.</p>
+    <button class="sn-copy-btn" data-sn-copy="hello@snowz.ai" aria-label="copy email">
+      <svg class="sn-copy-btn__idle sn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/>
+      </svg>
+      <svg class="sn-copy-btn__copied sn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m4 12 5 5L20 6"/>
+      </svg>
+      <span class="sn-prompt" style="margin-left:8px">copy email</span>
+    </button>
+
+    <hr class="sn-divider" style="margin: 56px 0 24px">
+    <p class="sn-meta">view source · this whole page is one html file</p>
+  </main>
+</body>
+</html>

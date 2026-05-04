@@ -8,3 +8,7 @@ out
 .env*.local
 _legacy
 *.tsbuildinfo
+
+# Synced from packages/ui-css and packages/ui-js by apps/docs/scripts/sync-static.mjs
+apps/docs/public/snowztech-ui.css
+apps/docs/public/snowztech-ui.esm.js

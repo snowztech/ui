@@ -1,0 +1,13 @@
+.sn-meta {
+  font-family: var(--sn-font-mono);
+  font-size: var(--sn-text-2xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sn-fg-faint);
+}
+
+.sn-prompt {
+  color: var(--sn-fg-faint);
+  user-select: none;
+}
+.sn-prompt::before { content: "› "; }

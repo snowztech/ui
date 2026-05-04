@@ -1,0 +1,34 @@
+.sn-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sn-s-2);
+  color: var(--sn-fg-muted);
+  font-size: var(--sn-text-sm);
+}
+
+.sn-pulse__dot {
+  position: relative;
+  display: inline-flex;
+  width: var(--sn-pulse-size, 8px);
+  height: var(--sn-pulse-size, 8px);
+  flex-shrink: 0;
+}
+
+.sn-pulse__dot::before,
+.sn-pulse__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--sn-pulse-color, var(--sn-success));
+}
+
+.sn-pulse__dot::before {
+  opacity: 0.6;
+  animation: sn-pulse 2s ease-in-out infinite;
+}
+
+.sn-pulse--success { --sn-pulse-color: var(--sn-success); }
+.sn-pulse--warning { --sn-pulse-color: var(--sn-warning); }
+.sn-pulse--danger  { --sn-pulse-color: var(--sn-danger); }
+.sn-pulse--accent  { --sn-pulse-color: var(--sn-accent); }

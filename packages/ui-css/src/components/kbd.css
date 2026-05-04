@@ -1,0 +1,8 @@
+.sn-kbd {
+  font-family: var(--sn-font-mono);
+  font-size: var(--sn-text-2xs);
+  border: 1px solid var(--sn-border-strong);
+  border-radius: var(--sn-r-xs);
+  padding: 1px 5px;
+  color: var(--sn-fg-muted);
+}

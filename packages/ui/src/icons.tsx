@@ -1,9 +1,12 @@
 import * as React from "react";
 
+const cx = (...parts: Array<string | undefined | false>) => parts.filter(Boolean).join(" ");
+
 export interface IconProps {
   size?: number;
   stroke?: number;
   color?: string;
+  className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
 }
@@ -12,6 +15,7 @@ export const Icon = ({
   size = 16,
   stroke = 1.5,
   color = "currentColor",
+  className,
   style,
   children,
 }: IconProps) => (
@@ -24,7 +28,8 @@ export const Icon = ({
     strokeWidth={stroke}
     strokeLinecap="round"
     strokeLinejoin="round"
-    style={{ display: "inline-block", verticalAlign: "middle", ...style }}
+    className={cx("sn-icon", className)}
+    style={style}
     aria-hidden="true"
   >
     {children}

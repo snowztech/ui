@@ -1,0 +1,6 @@
+.sn-divider {
+  height: 1px;
+  background: var(--sn-border);
+  border: 0;
+  margin: 0;
+}

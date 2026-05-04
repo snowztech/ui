@@ -1,0 +1,15 @@
+.sn-input {
+  font-family: var(--sn-font-mono);
+  font-size: var(--sn-text-sm);
+  color: var(--sn-fg);
+  background: transparent;
+  border: 1px solid var(--sn-border-strong);
+  border-radius: var(--sn-r-xs);
+  padding: 0 10px;
+  height: 30px;
+  width: 100%;
+  transition: border-color var(--sn-fast) var(--sn-ease);
+}
+.sn-input::placeholder { color: var(--sn-fg-faint); }
+.sn-input:hover { border-color: var(--sn-fg-muted); }
+.sn-input:focus { outline: none; border-color: var(--sn-accent); }

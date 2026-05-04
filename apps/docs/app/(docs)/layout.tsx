@@ -1,20 +1,26 @@
+import * as React from "react";
 import Link from "next/link";
 import { Monogram, MarkCrystal, GithubIcon } from "@snowztech/ui";
 import { ThemeToggle } from "@snowztech/ui/client";
+import pkg from "@snowztech/ui/package.json";
 
-const docsLinks = [
+const version = `v${pkg.version}`;
+
+type NavLink = { href: string; label: string; external?: boolean };
+
+const docsLinks: NavLink[] = [
   { href: "/", label: "overview" },
   { href: "/install", label: "install" },
   { href: "/logo-lab", label: "logo lab" },
 ];
 
-const apiLinks = [
+const apiLinks: NavLink[] = [
   { href: "/tokens", label: "tokens" },
   { href: "/components", label: "components" },
   { href: "/icons", label: "icons" },
 ];
 
-const exampleLinks = [
+const exampleLinks: NavLink[] = [
   { href: "/examples/link-in-bio", label: "link in bio" },
   { href: "/examples/personal-page", label: "personal page" },
   { href: "/examples/saas-landing", label: "saas landing" },
@@ -29,16 +35,24 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           <Monogram size={32} mark={MarkCrystal} radius={6} glyphScale={0.6} />
           <div className="docs-brand-text">
             <span className="docs-brand-name">snowztech<span style={{ color: "var(--sn-fg-muted)" }}>/ui</span></span>
-            <span className="docs-brand-version">v0.0.1</span>
+            <span className="docs-brand-version">{version}</span>
           </div>
         </Link>
 
-        <h2>docs</h2>
-        {docsLinks.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
-        <h2>api</h2>
-        {apiLinks.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
-        <h2>examples</h2>
-        {exampleLinks.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
+        {[
+          { title: "docs", links: docsLinks },
+          { title: "api", links: apiLinks },
+          { title: "examples", links: exampleLinks },
+        ].map(({ title, links }) => (
+          <React.Fragment key={title}>
+            <h2>{title}</h2>
+            {links.map((l) =>
+              l.external
+                ? <a key={l.href} href={l.href}>{l.label}</a>
+                : <Link key={l.href} href={l.href}>{l.label}</Link>
+            )}
+          </React.Fragment>
+        ))}
 
         <div className="docs-nav-footer">
           <a
@@ -56,10 +70,19 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         <header className="docs-topbar">
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
             <span style={{ color: "var(--sn-fg-faint)", fontSize: "var(--sn-text-2xs)" }}>
-              v0.0.1
+              {version}
             </span>
           </div>
           <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+            <a
+              href="/demo.html"
+              target="_blank"
+              rel="noreferrer"
+              className="docs-topbar-link"
+              title="static html demo"
+            >
+              demo
+            </a>
             <a
               href="https://github.com/snowztech/ui"
               target="_blank"
