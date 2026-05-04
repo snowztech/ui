@@ -1,5 +1,7 @@
 import * as React from "react";
 
+const cx = (...parts: Array<string | undefined | false>) => parts.filter(Boolean).join(" ");
+
 export type Theme = "light" | "dark";
 
 export interface ThemeToggleProps {
@@ -34,39 +36,19 @@ export function ThemeToggle({
     else document.documentElement.removeAttribute("data-theme");
   };
 
-  const filled = theme === "dark";
-
   return (
     <button
       type="button"
       onClick={toggle}
-      aria-label={`switch to ${filled ? "light" : "dark"} mode`}
-      className={className}
+      aria-label={`switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      className={cx("sn-theme-toggle", className)}
       style={{
-        appearance: "none",
-        border: "none",
-        background: "transparent",
-        padding: 6,
-        cursor: "pointer",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
+        ["--sn-theme-toggle-size" as string]: `${size}px`,
         opacity: mounted ? 1 : 0,
-        transition: "opacity 200ms",
         ...style,
       }}
     >
-      <span
-        style={{
-          display: "inline-block",
-          width: size,
-          height: size,
-          borderRadius: "50%",
-          border: `1px solid var(--sn-fg-muted)`,
-          background: filled ? "var(--sn-fg)" : "transparent",
-          transition: "background 160ms ease",
-        }}
-      />
+      <span className="sn-theme-toggle__indicator" />
     </button>
   );
 }

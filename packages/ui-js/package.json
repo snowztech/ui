@@ -1,0 +1,58 @@
+{
+  "name": "@snowztech/ui-js",
+  "version": "0.2.0",
+  "description": "Optional vanilla bindings for @snowztech/ui-css. Wires data-sn-* attributes for static HTML.",
+  "license": "MIT",
+  "author": {
+    "name": "Lucas Neves Pereira",
+    "email": "lnevespereira@proton.me",
+    "url": "https://github.com/lucasnevespereira"
+  },
+  "homepage": "https://github.com/snowztech/ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snowztech/ui.git",
+    "directory": "packages/ui-js"
+  },
+  "bugs": { "url": "https://github.com/snowztech/ui/issues" },
+  "keywords": [
+    "snowztech",
+    "ui",
+    "vanilla",
+    "design-system",
+    "progressive-enhancement"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./src/index.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./auto": "./dist/snowztech-ui.esm.js",
+    "./iife": "./dist/snowztech-ui.iife.js",
+    "./iife/min": "./dist/snowztech-ui.iife.min.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.7",
+    "typescript": "^5.6.3"
+  },
+  "engines": { "node": ">=18" },
+  "publishConfig": { "access": "public" }
+}

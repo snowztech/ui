@@ -1,6 +1,6 @@
 {
   "name": "@snowztech/ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Terminal-minimal React design system. Mark, icons, tokens, and primitives.",
   "license": "MIT",
   "author": {
@@ -38,6 +38,7 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
+    "src/styles.css",
     "src/tokens.css",
     "README.md",
     "LICENSE"
@@ -53,6 +54,7 @@
       "import": "./dist/client.js",
       "require": "./dist/client.cjs"
     },
+    "./styles.css": "./src/styles.css",
     "./tokens.css": "./src/tokens.css",
     "./package.json": "./package.json"
   },
@@ -64,6 +66,9 @@
   },
   "peerDependencies": {
     "react": ">=18"
+  },
+  "dependencies": {
+    "@snowztech/ui-css": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",

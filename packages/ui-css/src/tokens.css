@@ -1,0 +1,96 @@
+/* snowztech / design tokens
+   Pure CSS custom properties. Safe to import alone (no resets, no components). */
+
+:root {
+  --sn-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sn-font-sans: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --sn-text-2xs: 11px;
+  --sn-text-xs: 12px;
+  --sn-text-sm: 13px;
+  --sn-text-base: 14px;
+  --sn-text-md: 15px;
+  --sn-text-lg: 17px;
+  --sn-text-xl: 20px;
+  --sn-text-2xl: 24px;
+  --sn-text-3xl: 28px;
+  --sn-text-4xl: 36px;
+
+  --sn-leading-tight: 1.2;
+  --sn-leading-normal: 1.55;
+  --sn-leading-relaxed: 1.75;
+
+  --sn-s-1: 4px;  --sn-s-2: 8px;  --sn-s-3: 12px;
+  --sn-s-4: 16px; --sn-s-5: 20px; --sn-s-6: 24px;
+  --sn-s-7: 32px; --sn-s-8: 40px; --sn-s-9: 48px;
+  --sn-s-10: 64px; --sn-s-11: 80px; --sn-s-12: 96px;
+
+  --sn-r-none: 0;
+  --sn-r-xs: 2px;
+  --sn-r-sm: 4px;
+  --sn-r-md: 6px;
+  --sn-r-lg: 8px;
+
+  --sn-fast: 100ms;
+  --sn-base: 160ms;
+  --sn-ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* dark, default */
+  --sn-bg: #0a0a0a;
+  --sn-bg-elev-1: #111111;
+  --sn-bg-elev-2: #181818;
+  --sn-bg-inset: #050505;
+
+  --sn-border: #1f1f1f;
+  --sn-border-strong: #2a2a2a;
+  --sn-border-subtle: #161616;
+
+  --sn-fg: #e8e8e8;
+  --sn-fg-muted: #888888;
+  --sn-fg-subtle: #666666;
+  --sn-fg-faint: #444444;
+  --sn-fg-inverse: #0a0a0a;
+
+  --sn-accent: #8ab4f8;
+  --sn-accent-hover: #a8c7fa;
+  --sn-accent-active: #6c9eed;
+  --sn-accent-fg: #0a0a0a;
+  --sn-accent-soft: rgba(138, 180, 248, 0.10);
+  --sn-accent-border: rgba(138, 180, 248, 0.24);
+
+  --sn-success: #7fc77f;
+  --sn-warning: #d4a857;
+  --sn-danger: #d77070;
+
+  --sn-success-soft: rgba(127, 199, 127, 0.10);
+  --sn-warning-soft: rgba(212, 168, 87, 0.10);
+  --sn-danger-soft:  rgba(215, 112, 112, 0.10);
+
+  --sn-shadow-sm: none;
+  --sn-shadow-md: 0 0 0 1px var(--sn-border);
+  --sn-shadow-lg: 0 0 0 1px var(--sn-border-strong);
+}
+
+[data-theme="light"] {
+  --sn-bg: #f7f7f5;
+  --sn-bg-elev-1: #ffffff;
+  --sn-bg-elev-2: #ffffff;
+  --sn-bg-inset: #efefec;
+
+  --sn-border: #e2e2dd;
+  --sn-border-strong: #c8c8c2;
+  --sn-border-subtle: #ececea;
+
+  --sn-fg: #161616;
+  --sn-fg-muted: #6a6a6a;
+  --sn-fg-subtle: #888888;
+  --sn-fg-faint: #b0b0ad;
+  --sn-fg-inverse: #ffffff;
+
+  --sn-accent: #2a64d6;
+  --sn-accent-hover: #1f56c2;
+  --sn-accent-active: #194ba8;
+  --sn-accent-fg: #ffffff;
+  --sn-accent-soft: rgba(42, 100, 214, 0.08);
+  --sn-accent-border: rgba(42, 100, 214, 0.24);
+}

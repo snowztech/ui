@@ -1,0 +1,23 @@
+/* Resets and global defaults. Optional. Import tokens.css alone to skip these. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  font-family: var(--sn-font-mono);
+  font-size: var(--sn-text-sm);
+  line-height: var(--sn-leading-normal);
+  color: var(--sn-fg);
+  background: var(--sn-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--sn-accent-soft); color: var(--sn-fg); }
+
+a { color: var(--sn-accent); text-decoration: none; }
+a:hover { color: var(--sn-accent-hover); }
+
+@keyframes sn-spin  { to { transform: rotate(360deg); } }
+@keyframes sn-pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+@keyframes sn-blink { 50% { opacity: 0; } }

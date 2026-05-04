@@ -1,0 +1,25 @@
+.sn-copy-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--sn-fg-muted);
+  padding: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--sn-r-xs);
+  transition: color var(--sn-fast) var(--sn-ease),
+              border-color var(--sn-fast) var(--sn-ease);
+}
+.sn-copy-btn:hover { color: var(--sn-fg); }
+.sn-copy-btn:focus-visible { outline: 1px solid var(--sn-accent); outline-offset: 1px; }
+.sn-copy-btn[data-copied="true"],
+.sn-copy-btn[data-copied="true"]:hover {
+  color: var(--sn-success);
+}
+
+/* Hide the "copied" icon until the data attribute flips. */
+.sn-copy-btn .sn-copy-btn__copied { display: none; }
+.sn-copy-btn[data-copied="true"] .sn-copy-btn__copied { display: inline-flex; }
+.sn-copy-btn[data-copied="true"] .sn-copy-btn__idle   { display: none; }

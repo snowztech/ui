@@ -1,5 +1,6 @@
 import * as React from "react";
-import { CheckIcon } from "./icons";
+
+const cx = (...parts: Array<string | undefined | false>) => parts.filter(Boolean).join(" ");
 
 export interface CopyButtonProps {
   value: string;
@@ -15,7 +16,7 @@ export function CopyButton({ value, size = 14, className, style }: CopyButtonPro
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);
-      setTimeout(() => setCopied(false), 1200);
+      window.setTimeout(() => setCopied(false), 1200);
     } catch {
       // ignored
     }
@@ -26,36 +27,17 @@ export function CopyButton({ value, size = 14, className, style }: CopyButtonPro
       type="button"
       onClick={onCopy}
       aria-label={copied ? "copied" : "copy"}
-      className={className}
-      style={{
-        appearance: "none",
-        border: "1px solid transparent",
-        background: "transparent",
-        color: copied ? "var(--sn-success)" : "var(--sn-fg-muted)",
-        padding: 6,
-        cursor: "pointer",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: "var(--sn-r-xs)",
-        transition: "color 120ms ease, border-color 120ms ease",
-        ...style,
-      }}
-      onMouseEnter={(e) => {
-        if (!copied) e.currentTarget.style.color = "var(--sn-fg)";
-      }}
-      onMouseLeave={(e) => {
-        if (!copied) e.currentTarget.style.color = "var(--sn-fg-muted)";
-      }}
+      data-copied={copied || undefined}
+      className={cx("sn-copy-btn", className)}
+      style={style}
     >
-      {copied ? (
-        <CheckIcon size={size} />
-      ) : (
-        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <rect x="9" y="9" width="11" height="11" rx="1.5" />
-          <path d="M5 15V5a1 1 0 0 1 1-1h10" />
-        </svg>
-      )}
+      <svg className="sn-copy-btn__idle" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="9" y="9" width="11" height="11" rx="1.5" />
+        <path d="M5 15V5a1 1 0 0 1 1-1h10" />
+      </svg>
+      <svg className="sn-copy-btn__copied" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="m4 12 5 5L20 6" />
+      </svg>
     </button>
   );
 }

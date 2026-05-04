@@ -1,0 +1,21 @@
+.sn-monogram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--sn-monogram-bg, var(--sn-bg));
+  color: var(--sn-monogram-fg, var(--sn-fg));
+  width: var(--sn-monogram-size, 64px);
+  height: var(--sn-monogram-size, 64px);
+  border-radius: var(--sn-monogram-radius, var(--sn-r-md));
+}
+
+.sn-monogram--xs { --sn-monogram-size: 32px; --sn-monogram-radius: var(--sn-r-xs); }
+.sn-monogram--sm { --sn-monogram-size: 48px; --sn-monogram-radius: var(--sn-r-sm); }
+.sn-monogram--md { --sn-monogram-size: 64px; --sn-monogram-radius: var(--sn-r-md); }
+.sn-monogram--lg { --sn-monogram-size: 96px; --sn-monogram-radius: var(--sn-r-lg); }
+
+.sn-monogram--inverse {
+  --sn-monogram-bg: var(--sn-fg);
+  --sn-monogram-fg: var(--sn-bg);
+}

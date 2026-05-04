@@ -1,0 +1,12 @@
+.sn-card {
+  background: transparent;
+  border: 1px solid var(--sn-border);
+  border-radius: var(--sn-r-xs);
+  padding: var(--sn-s-5);
+}
+.sn-card--rounded { border-radius: var(--sn-r-lg); }
+.sn-card--accent {
+  border-color: var(--sn-accent-border);
+  background: var(--sn-accent-soft);
+}
+.sn-card--inset { background: var(--sn-bg-inset); }

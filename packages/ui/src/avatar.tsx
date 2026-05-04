@@ -1,5 +1,7 @@
 import * as React from "react";
 
+const cx = (...parts: Array<string | undefined | false>) => parts.filter(Boolean).join(" ");
+
 export interface AvatarProps {
   src?: string;
   alt?: string;
@@ -27,39 +29,20 @@ export const Avatar = ({
   style,
   className,
 }: AvatarProps) => {
-  const radius = shape === "circle" ? "50%" : "var(--sn-r-xs)";
   const initials = initialsFrom(name);
-
   return (
     <span
-      className={className}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: size,
-        height: size,
-        borderRadius: radius,
-        background: "var(--sn-bg-elev-1)",
-        color: "var(--sn-fg-muted)",
-        fontFamily: "var(--sn-font-mono)",
-        fontSize: Math.max(10, Math.round(size * 0.38)),
-        fontWeight: 500,
-        overflow: "hidden",
-        flexShrink: 0,
-        boxShadow: ring ? "0 0 0 1px var(--sn-border-strong)" : undefined,
-        ...style,
-      }}
+      className={cx(
+        "sn-avatar",
+        shape === "square" && "sn-avatar--square",
+        ring && "sn-avatar--ring",
+        className,
+      )}
+      style={{ ["--sn-avatar-size" as string]: `${size}px`, ...style }}
     >
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={src}
-          alt={alt ?? name ?? ""}
-          width={size}
-          height={size}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
+        <img src={src} alt={alt ?? name ?? ""} width={size} height={size} />
       ) : (
         <span aria-hidden="true">{initials || "•"}</span>
       )}
@@ -70,12 +53,15 @@ export const Avatar = ({
 export interface AvatarStackProps {
   children: React.ReactNode;
   overlap?: number;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-export const AvatarStack = ({ children, overlap = 8 }: AvatarStackProps) => (
-  <span style={{ display: "inline-flex" }}>
-    {React.Children.map(children, (child, i) => (
-      <span style={{ marginLeft: i === 0 ? 0 : -overlap }}>{child}</span>
-    ))}
+export const AvatarStack = ({ children, overlap = 8, className, style }: AvatarStackProps) => (
+  <span
+    className={cx("sn-avatar-stack", className)}
+    style={{ ["--sn-avatar-overlap" as string]: `-${overlap}px`, ...style }}
+  >
+    {children}
   </span>
 );
