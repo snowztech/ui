@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { Monogram, MarkCrystal, GithubIcon } from "@snowztech/ui";
+import { Monogram, MarkCrystal, GithubIcon, MenuIcon } from "@snowztech/ui";
 import { ThemeToggle } from "@snowztech/ui/client";
 import pkg from "@snowztech/ui/package.json";
 
@@ -30,6 +30,12 @@ const exampleLinks: NavLink[] = [
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="docs-shell">
+      <input
+        type="checkbox"
+        id="docs-nav-toggle"
+        className="docs-nav-toggle-input"
+        aria-hidden="true"
+      />
       <aside className="docs-nav">
         <Link href="/" className="docs-brand">
           <Monogram size={32} mark={MarkCrystal} radius={6} glyphScale={0.6} />
@@ -66,9 +72,22 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         </div>
       </aside>
 
+      <label
+        htmlFor="docs-nav-toggle"
+        className="docs-nav-backdrop"
+        aria-hidden="true"
+      />
+
       <div className="docs-content">
         <header className="docs-topbar">
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+            <label
+              htmlFor="docs-nav-toggle"
+              className="docs-nav-toggle-btn"
+              aria-label="toggle navigation"
+            >
+              <MenuIcon size={16} />
+            </label>
             <span style={{ color: "var(--sn-fg-faint)", fontSize: "var(--sn-text-2xs)" }}>
               {version}
             </span>

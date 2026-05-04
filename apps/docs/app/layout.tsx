@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: "Terminal-minimal React design system.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>

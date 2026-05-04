@@ -10,7 +10,8 @@
     "typecheck": "pnpm -r typecheck",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm build && changeset publish",
+    "publish:all": "pnpm build && pnpm -F @snowztech/ui-css publish --access public --no-git-checks && pnpm -F @snowztech/ui-js publish --access public --no-git-checks && pnpm -F @snowztech/ui publish --access public --no-git-checks"
   },
   "packageManager": "pnpm@10.17.1",
   "devDependencies": {
