@@ -221,6 +221,18 @@ export default function Components() {
 <Textarea invalid defaultValue="boom" />`}</Code>
       </Snippets>
 
+      <h2>File input</h2>
+      <p>Styled via <code>::file-selector-button</code> — no JS, native input. Works in React too: <code>&lt;input type=&quot;file&quot; className=&quot;sn-file&quot; /&gt;</code>.</p>
+      <div className="sn-preview sn-preview--column">
+        <input type="file" className="sn-file" />
+        <input type="file" className="sn-file" disabled />
+      </div>
+      <Snippets labels={["html / react"]}>
+        <Code lang="tsx">{`<input type="file" className="sn-file" />
+<input type="file" className="sn-file" accept=".pdf" />
+<input type="file" className="sn-file" disabled />`}</Code>
+      </Snippets>
+
       <h2>Field</h2>
       <p>Label + control + hint/error in one row. Use <code>Field</code> for forms; drop to <code>Label</code> if you need to compose manually.</p>
       <div className="sn-preview sn-preview--column">
