@@ -1,6 +1,6 @@
 {
   "name": "@snowztech/ui-css",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Terminal-minimal CSS design system. Tokens, resets, and component classes. Framework-agnostic.",
   "license": "MIT",
   "author": {
@@ -14,7 +14,9 @@
     "url": "git+https://github.com/snowztech/ui.git",
     "directory": "packages/ui-css"
   },
-  "bugs": { "url": "https://github.com/snowztech/ui/issues" },
+  "bugs": {
+    "url": "https://github.com/snowztech/ui/issues"
+  },
   "keywords": [
     "design-system",
     "css",
@@ -30,13 +32,13 @@
     "LICENSE"
   ],
   "exports": {
-    ".":              "./dist/snowztech-ui.css",
-    "./min":          "./dist/snowztech-ui.min.css",
-    "./tokens":       "./dist/tokens.css",
-    "./tokens.css":   "./dist/tokens.css",
-    "./base":         "./dist/base.css",
-    "./base.css":     "./dist/base.css",
-    "./styles.css":   "./dist/snowztech-ui.css",
+    ".": "./dist/snowztech-ui.css",
+    "./min": "./dist/snowztech-ui.min.css",
+    "./tokens": "./dist/tokens.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./base": "./dist/base.css",
+    "./base.css": "./dist/base.css",
+    "./styles.css": "./dist/snowztech-ui.css",
     "./components/*": "./dist/components/*.css",
     "./package.json": "./package.json"
   },
@@ -48,7 +50,13 @@
   "devDependencies": {
     "esbuild": "^0.27.7"
   },
-  "engines": { "node": ">=18" },
-  "publishConfig": { "access": "public" },
-  "sideEffects": ["*.css"]
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
 }
