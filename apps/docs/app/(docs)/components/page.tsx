@@ -1,4 +1,5 @@
-import { MarkCrystal, Monogram, SnowWordmark, Avatar, AvatarStack, Pulse } from "@snowztech/ui";
+import { MarkCrystal, Monogram, SnowWordmark, Avatar, AvatarStack, Pulse, Input, Textarea, Field } from "@snowztech/ui";
+import { ThemeToggle } from "@snowztech/ui/client";
 import { Code } from "../../../components/code";
 import { Snippets } from "../../../components/snippets";
 
@@ -179,11 +180,105 @@ export default function Components() {
       </Snippets>
 
       <h2>Input</h2>
-      <div className="sn-preview">
-        <input className="sn-input" placeholder="Search…" />
+      <p>Single-line text input. Sizes <code>sm</code> / <code>md</code> / <code>lg</code>. Pass <code>invalid</code> for error state.</p>
+      <div className="sn-preview sn-preview--column">
+        <Input placeholder="Search…" />
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <Input size="sm" placeholder="small" />
+          <Input placeholder="default" />
+          <Input size="lg" placeholder="large" />
+        </div>
+        <Input defaultValue="not-an-email" invalid />
+        <Input placeholder="disabled" disabled />
       </div>
-      <Snippets labels={["html / react"]}>
-        <Code lang="tsx">{`<input className="sn-input" placeholder="Search…" />`}</Code>
+      <Snippets>
+        <Code lang="html">{`<input class="sn-input" placeholder="Search…" />
+<input class="sn-input sn-input--sm" placeholder="small" />
+<input class="sn-input sn-input--lg" placeholder="large" />
+<input class="sn-input sn-input--invalid" value="not-an-email" />
+<input class="sn-input" disabled placeholder="disabled" />`}</Code>
+        <Code lang="tsx">{`import { Input } from "@snowztech/ui";
+
+<Input placeholder="Search…" />
+<Input size="sm" placeholder="small" />
+<Input size="lg" placeholder="large" />
+<Input invalid defaultValue="not-an-email" />
+<Input disabled placeholder="disabled" />`}</Code>
+      </Snippets>
+
+      <h2>Textarea</h2>
+      <p>Multi-line text. Resize vertical by default.</p>
+      <div className="sn-preview sn-preview--column">
+        <Textarea placeholder="Paste your text here…" />
+        <Textarea defaultValue="boom" invalid />
+      </div>
+      <Snippets>
+        <Code lang="html">{`<textarea class="sn-textarea" placeholder="Paste your text here…"></textarea>
+<textarea class="sn-textarea sn-textarea--invalid">boom</textarea>`}</Code>
+        <Code lang="tsx">{`import { Textarea } from "@snowztech/ui";
+
+<Textarea placeholder="Paste your text here…" />
+<Textarea invalid defaultValue="boom" />`}</Code>
+      </Snippets>
+
+      <h2>Field</h2>
+      <p>Label + control + hint/error in one row. Use <code>Field</code> for forms; drop to <code>Label</code> if you need to compose manually.</p>
+      <div className="sn-preview sn-preview--column">
+        <Field label="Email" hint="We never share it." htmlFor="ex-email" required>
+          <Input id="ex-email" type="email" placeholder="you@snowztech.com" />
+        </Field>
+        <Field label="Bio" htmlFor="ex-bio">
+          <Textarea id="ex-bio" placeholder="A few words…" />
+        </Field>
+        <Field label="Username" htmlFor="ex-user" error="Already taken.">
+          <Input id="ex-user" defaultValue="lucas" invalid />
+        </Field>
+      </div>
+      <Snippets>
+        <Code lang="html">{`<div class="sn-field">
+  <label class="sn-label" for="email">Email<span class="sn-label__required">*</span></label>
+  <input id="email" class="sn-input" type="email" placeholder="you@snowztech.com" />
+  <span class="sn-hint">We never share it.</span>
+</div>
+
+<div class="sn-field">
+  <label class="sn-label" for="user">Username</label>
+  <input id="user" class="sn-input sn-input--invalid" value="lucas" />
+  <span class="sn-error" role="alert">Already taken.</span>
+</div>`}</Code>
+        <Code lang="tsx">{`import { Field, Input, Textarea } from "@snowztech/ui";
+
+<Field label="Email" hint="We never share it." htmlFor="email" required>
+  <Input id="email" type="email" placeholder="you@snowztech.com" />
+</Field>
+
+<Field label="Bio" htmlFor="bio">
+  <Textarea id="bio" placeholder="A few words…" />
+</Field>
+
+<Field label="Username" htmlFor="user" error="Already taken.">
+  <Input id="user" invalid defaultValue="lucas" />
+</Field>`}</Code>
+      </Snippets>
+
+      <h2>Theme toggle</h2>
+      <p>Tiny button that flips <code>data-theme</code> on <code>&lt;html&gt;</code> and persists to <code>localStorage</code>. React version is a client component.</p>
+      <div className="sn-preview">
+        <ThemeToggle />
+        <ThemeToggle size={16} />
+      </div>
+      <Snippets>
+        <Code lang="html">{`<button class="sn-theme-toggle" aria-label="toggle theme">
+  <span class="sn-theme-toggle__indicator"></span>
+</button>
+
+<script>
+  // wire up yourself: flip data-theme="light" on <html>, persist to localStorage.
+</script>`}</Code>
+        <Code lang="tsx">{`import { ThemeToggle } from "@snowztech/ui/client";
+
+<ThemeToggle />
+<ThemeToggle size={16} defaultTheme="dark" storageKey="theme" />`}</Code>
       </Snippets>
 
       <h2>Card</h2>
