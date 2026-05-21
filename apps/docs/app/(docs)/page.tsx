@@ -1,4 +1,5 @@
 import { Monogram, MarkCrystal } from "@snowztech/ui";
+import pkg from "@snowztech/ui/package.json";
 import { Code } from "../../components/code";
 import { Snippets } from "../../components/snippets";
 
@@ -27,7 +28,7 @@ export default function Home() {
       </nav>
 
       <footer className="overview-meta">
-        v0.2.0 · built by{" "}
+        v{pkg.version} · built by{" "}
         <a href="https://github.com/lucasnevespereira" target="_blank" rel="noreferrer">
           Lucas Neves Pereira
         </a>
