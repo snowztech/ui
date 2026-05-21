@@ -280,13 +280,13 @@ export default function Components() {
         <ThemeToggle size={16} />
       </div>
       <Snippets>
-        <Code lang="html">{`<button class="sn-theme-toggle" aria-label="toggle theme">
+        <Code lang="html">{`<button class="sn-theme-toggle" data-sn-theme-toggle aria-label="toggle theme">
   <span class="sn-theme-toggle__indicator"></span>
 </button>
 
-<script>
-  // wire up yourself: flip data-theme="light" on <html>, persist to localStorage.
-</script>`}</Code>
+<!-- auto-wires [data-sn-theme-toggle] on load -->
+<script type="module"
+        src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js/dist/snowztech-ui.esm.js"></script>`}</Code>
         <Code lang="tsx">{`import { ThemeToggle } from "@snowztech/ui/client";
 
 <ThemeToggle />
