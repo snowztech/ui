@@ -1,0 +1,61 @@
+.sn-prose {
+  max-width: 680px;
+  font-size: var(--sn-text-base);
+  line-height: var(--sn-leading-normal);
+  color: var(--sn-fg-muted);
+}
+
+.sn-prose h1,
+.sn-prose h2,
+.sn-prose h3 { color: var(--sn-fg); font-weight: 600; }
+.sn-prose h1 { margin: 0 0 var(--sn-s-6); font-size: var(--sn-text-3xl); line-height: 1.25; letter-spacing: -0.02em; }
+.sn-prose h2 { margin: var(--sn-s-9) 0 var(--sn-s-4); font-size: var(--sn-text-xl); line-height: var(--sn-leading-tight); letter-spacing: -0.01em; }
+.sn-prose h3 { margin: var(--sn-s-7) 0 var(--sn-s-2); font-size: inherit; }
+/* Keeps a heading off the top edge when a contents link jumps to it. */
+.sn-prose :is(h2, h3)[id] { scroll-margin-top: var(--sn-s-6); }
+
+.sn-prose :is(p, ul, ol, blockquote, pre, table, figure) { margin: 0 0 var(--sn-s-4); }
+.sn-prose :is(ul, ol) { padding-left: var(--sn-s-5); }
+.sn-prose li + li { margin-top: var(--sn-s-2); }
+
+.sn-prose a { color: var(--sn-fg); text-decoration: underline; text-underline-offset: 3px; }
+.sn-prose a:hover { color: var(--sn-accent); }
+.sn-prose strong { color: var(--sn-fg); font-weight: 600; }
+
+.sn-prose code {
+  padding: 1px 5px;
+  border: 1px solid var(--sn-border-subtle);
+  border-radius: var(--sn-r-sm);
+  background: var(--sn-bg-elev-1);
+  color: var(--sn-fg);
+  font: inherit;
+  overflow-wrap: anywhere;
+}
+.sn-prose pre {
+  padding: var(--sn-s-4) 18px;
+  overflow-x: auto;
+  border: 1px solid var(--sn-border-subtle);
+  border-radius: var(--sn-r-lg);
+  background: var(--sn-bg-elev-1);
+  color: var(--sn-fg);
+  font-size: var(--sn-text-sm);
+  line-height: 1.6;
+  tab-size: 4;
+}
+.sn-prose pre code { padding: 0; border: 0; background: none; overflow-wrap: normal; }
+
+.sn-prose blockquote { padding-left: var(--sn-s-4); border-left: 2px solid var(--sn-border-strong); color: var(--sn-fg); }
+.sn-prose img { max-width: 100%; height: auto; }
+.sn-prose hr { height: 1px; margin: var(--sn-s-9) 0; border: 0; background: var(--sn-border); }
+
+.sn-prose table { width: 100%; border-collapse: collapse; font-size: var(--sn-text-sm); }
+.sn-prose :is(th, td) { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--sn-border-subtle); }
+.sn-prose thead th { color: var(--sn-fg); font-weight: 600; background: var(--sn-bg-elev-1); }
+.sn-prose tbody th { color: var(--sn-fg); font-weight: 500; }
+.sn-prose tr:last-child :is(th, td) { border-bottom: 0; }
+
+@media (max-width: 600px) {
+  .sn-prose h1 { font-size: 23px; }
+  .sn-prose h2 { margin-top: var(--sn-s-8); font-size: 18px; }
+  .sn-prose pre { padding: 14px; font-size: var(--sn-text-xs); }
+}

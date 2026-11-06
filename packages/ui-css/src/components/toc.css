@@ -1,0 +1,39 @@
+.sn-toc { margin-bottom: var(--sn-s-7); font-size: var(--sn-text-sm); }
+.sn-toc details { padding: var(--sn-s-3) var(--sn-s-4); border: 1px solid var(--sn-border-subtle); border-radius: var(--sn-r-lg); }
+.sn-toc summary { cursor: pointer; color: var(--sn-fg); font-weight: 500; }
+.sn-toc ul { list-style: none; margin: var(--sn-s-3) 0 0; padding: 0; }
+.sn-toc li + li { margin-top: var(--sn-s-2); }
+.sn-toc a { color: var(--sn-fg-muted); text-decoration: none; }
+.sn-toc a:hover,
+.sn-toc a[aria-current] { color: var(--sn-fg); }
+
+/* Wide screens: the contents leave the flow and sit sticky beside the text.
+   The layout holds an optional header, the .sn-toc and the text, in that order. */
+.sn-toc-layout { display: grid; }
+@media (min-width: 1000px) {
+  .sn-toc-layout {
+    grid-template-columns: minmax(0, 680px) 220px;
+    column-gap: var(--sn-s-10);
+    justify-content: center;
+  }
+  .sn-toc-layout > * { grid-column: 1; }
+  .sn-toc-layout > .sn-toc {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: start;
+    position: sticky;
+    top: var(--sn-s-6);
+    margin: 0;
+    padding-top: var(--sn-s-2);
+  }
+  .sn-toc-layout > .sn-toc details { padding: 0; border: 0; }
+  .sn-toc-layout > .sn-toc summary {
+    list-style: none;
+    pointer-events: none;
+    color: var(--sn-fg-subtle);
+    font-size: var(--sn-text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .sn-toc-layout > .sn-toc summary::-webkit-details-marker { display: none; }
+}

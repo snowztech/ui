@@ -284,8 +284,8 @@
   font-weight: 700;
   margin: 40px 0 12px 0;
 }
-.docs-main p { margin: 0 0 12px 0; }
-.docs-main pre {
+.docs-main p:not(.sn-prose *) { margin: 0 0 12px 0; }
+.docs-main pre:not(.sn-prose *) {
   background: var(--sn-bg-inset);
   border: 1px solid var(--sn-border);
   padding: 14px 16px;
@@ -345,7 +345,7 @@
 /* Shiki dual theme: show light or dark based on data-theme on html */
 .shiki, .shiki span { color: var(--shiki-dark) !important; background-color: transparent !important; }
 [data-theme="light"] .shiki, [data-theme="light"] .shiki span { color: var(--shiki-light) !important; }
-.docs-main p > code, .docs-main li > code {
+.docs-main :is(p, li):not(.sn-prose *) > code {
   background: var(--sn-bg-inset);
   border: 1px solid var(--sn-border-subtle);
   padding: 1px 6px;

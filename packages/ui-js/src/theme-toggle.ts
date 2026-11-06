@@ -10,7 +10,9 @@ export function getTheme(storageKey = DEFAULT_KEY): Theme {
     const stored = localStorage.getItem(storageKey) as Theme | null;
     if (stored === "light" || stored === "dark") return stored;
   } catch { /* ignore */ }
-  return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  const attr = document.documentElement.getAttribute("data-theme");
+  if (attr === "system") return matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  return attr === "light" ? "light" : "dark";
 }
 
 export function setTheme(theme: Theme, storageKey = DEFAULT_KEY): void {
