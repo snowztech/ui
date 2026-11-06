@@ -21,3 +21,6 @@
   transition: background var(--sn-base) var(--sn-ease);
 }
 [data-theme="light"] .sn-theme-toggle__indicator { background: transparent; }
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] .sn-theme-toggle__indicator { background: transparent; }
+}

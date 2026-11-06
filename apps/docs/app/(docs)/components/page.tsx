@@ -293,6 +293,57 @@ export default function Components() {
 <ThemeToggle size={16} defaultTheme="dark" storageKey="theme" />`}</Code>
       </Snippets>
 
+      <h2>Prose</h2>
+      <p>Wrap an article in <code>.sn-prose</code> and its plain HTML is styled: headings, lists, links, code, quotes and tables.</p>
+      <div className="sn-preview sn-preview--column">
+        <div className="sn-prose">
+          <h3>Set it up by hand</h3>
+          <p>Create a worktree for each task, on a new branch. <strong>Commits are shared</strong>, files are not. See <a href="#">the docs</a>.</p>
+          <pre><code>git worktree add -b search ../app-search</code></pre>
+          <blockquote>The fix is in. What should I do with it?</blockquote>
+        </div>
+      </div>
+      <Snippets labels={["html / react"]}>
+        <Code lang="html">{`<article class="sn-prose">
+  <h1>Title</h1>
+  <p>Text with <code>code</code> and <a href="#">a link</a>.</p>
+  <pre><code>npm install</code></pre>
+</article>`}</Code>
+      </Snippets>
+
+      <h2>Contents</h2>
+      <p>A <code>.sn-toc</code> is a box that folds on phones. Inside <code>.sn-toc-layout</code> it becomes a sticky column beside the text from 1000px up. Put an optional header first, then the contents, then the text.</p>
+      <div className="sn-preview sn-preview--column">
+        <nav className="sn-toc" aria-label="On this page" style={{ margin: 0 }}>
+          <details open>
+            <summary>On this page</summary>
+            <ul>
+              <li><a href="#">Why one folder breaks</a></li>
+              <li><a href="#">Set it up by hand</a></li>
+              <li><a href="#">Clean up</a></li>
+            </ul>
+          </details>
+        </nav>
+      </div>
+      <Snippets labels={["html"]}>
+        <Code lang="html">{`<main class="sn-toc-layout">
+  <header><h1>Title</h1></header>
+  <nav class="sn-toc" aria-label="On this page">
+    <details>
+      <summary>On this page</summary>
+      <ul><li><a href="#setup">Set it up</a></li></ul>
+    </details>
+  </nav>
+  <article class="sn-prose">…</article>
+</main>
+
+<!-- open the list where it sits beside the text -->
+<script>
+  if (matchMedia("(min-width: 1000px)").matches)
+    document.querySelector(".sn-toc details").open = true;
+</script>`}</Code>
+      </Snippets>
+
       <h2>Card</h2>
       <p>Flat by default. Compose with <code>--rounded</code>, <code>--accent</code>, <code>--inset</code>.</p>
       <div className="sn-preview sn-preview--column">

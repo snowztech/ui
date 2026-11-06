@@ -55,6 +55,8 @@ Tokens prefix `--sn-`. Classes prefix `sn-`. Modifier classes use `--`.
 | `sn-avatar-stack` | ·                                                  |
 | `sn-pulse`        | `--success --warning --danger --accent`            |
 | `sn-copy-btn`     | uses `data-copied="true"`                          |
+| `sn-prose`        | styles the plain HTML of an article inside it      |
+| `sn-toc`, `sn-toc-layout` | contents box, sticky beside the text on wide screens |
 | `sn-theme-toggle` | reads `[data-theme="light"]` from `<html>`         |
 
 ## Theming
@@ -63,6 +65,12 @@ Default is dark. Switch by setting `data-theme="light"` on `<html>`:
 
 ```js
 document.documentElement.setAttribute("data-theme", "light");
+```
+
+Or follow the OS with `data-theme="system"`. The theme toggle still overrides it:
+
+```html
+<html data-theme="system">
 ```
 
 Override any token by re-declaring on `:root` or a scope:

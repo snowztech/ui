@@ -94,3 +94,31 @@
   --sn-accent-soft: rgba(42, 100, 214, 0.08);
   --sn-accent-border: rgba(42, 100, 214, 0.24);
 }
+
+/* Opt in with <html data-theme="system"> to follow the OS. A toggle that sets
+   light or dark replaces the attribute, so the user's pick still wins. */
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] {
+    --sn-bg: #f7f7f5;
+    --sn-bg-elev-1: #ffffff;
+    --sn-bg-elev-2: #ffffff;
+    --sn-bg-inset: #efefec;
+
+    --sn-border: #e2e2dd;
+    --sn-border-strong: #c8c8c2;
+    --sn-border-subtle: #ececea;
+
+    --sn-fg: #161616;
+    --sn-fg-muted: #6a6a6a;
+    --sn-fg-subtle: #888888;
+    --sn-fg-faint: #b0b0ad;
+    --sn-fg-inverse: #ffffff;
+
+    --sn-accent: #2a64d6;
+    --sn-accent-hover: #1f56c2;
+    --sn-accent-active: #194ba8;
+    --sn-accent-fg: #ffffff;
+    --sn-accent-soft: rgba(42, 100, 214, 0.08);
+    --sn-accent-border: rgba(42, 100, 214, 0.24);
+  }
+}

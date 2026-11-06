@@ -16,4 +16,6 @@
 @import "./components/avatar.css";
 @import "./components/pulse.css";
 @import "./components/copy-button.css";
+@import "./components/prose.css";
+@import "./components/toc.css";
 @import "./components/theme-toggle.css";

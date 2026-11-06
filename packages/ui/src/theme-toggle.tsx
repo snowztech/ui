@@ -23,7 +23,9 @@ export function ThemeToggle({
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    const stored = (localStorage.getItem(storageKey) as Theme | null) ?? defaultTheme;
+    const followsSystem = document.documentElement.getAttribute("data-theme") === "system";
+    const system: Theme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    const stored = (localStorage.getItem(storageKey) as Theme | null) ?? (followsSystem ? system : defaultTheme);
     setTheme(stored);
     setMounted(true);
   }, [storageKey, defaultTheme]);

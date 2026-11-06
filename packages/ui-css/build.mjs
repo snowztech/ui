@@ -1,5 +1,5 @@
 import { build } from "esbuild";
-import { cp, mkdir, rm } from "node:fs/promises";
+import { cp, mkdir, readdir, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
@@ -33,10 +33,7 @@ await cp(src("tokens.css"), dist("tokens.css"));
 await cp(src("base.css"), dist("base.css"));
 
 // Per-component files for advanced users / tree-shaking.
-const components = [
-  "btn", "input", "card", "badge", "kbd", "divider", "meta", "icon",
-  "mark", "monogram", "avatar", "pulse", "copy-button", "theme-toggle",
-];
+const components = (await readdir(src("components"))).map((f) => f.replace(/\.css$/, ""));
 for (const name of components) {
   await cp(src("components", `${name}.css`), dist("components", `${name}.css`));
 }
