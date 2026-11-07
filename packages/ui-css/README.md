@@ -18,7 +18,7 @@ import "@snowztech/ui-css";
 
 ```html
 <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.2/dist/snowztech-ui.min.css">
+      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.6/dist/snowztech-ui.min.css">
 ```
 
 ## What's inside
@@ -54,7 +54,7 @@ Tokens prefix `--sn-`. Classes prefix `sn-`. Modifier classes use `--`.
 | `sn-avatar`       | `--xs --sm --md --lg --xl --square --ring`         |
 | `sn-avatar-stack` | ·                                                  |
 | `sn-pulse`        | `--success --warning --danger --accent`            |
-| `sn-copy-btn`     | uses `data-copied="true"`                          |
+| `sn-copy-btn`     | uses `data-copied="true"`, draws its own icons when empty |
 | `sn-prose`        | styles the plain HTML of an article inside it      |
 | `sn-toc`, `sn-toc-layout` | contents box, sticky beside the text on wide screens |
 | `sn-callout`      | `--note --tip --warning --danger`, `__title`       |
