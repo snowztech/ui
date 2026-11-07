@@ -3,10 +3,12 @@
 
 import { initCopyButtons } from "./copy-button";
 import { initThemeToggles } from "./theme-toggle";
+import { initTocs } from "./toc";
 
 export function init(root: ParentNode = document): void {
   initCopyButtons(root);
   initThemeToggles(root);
+  initTocs(root);
 }
 
 if (typeof document !== "undefined") {
