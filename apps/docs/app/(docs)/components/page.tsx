@@ -1,5 +1,5 @@
-import { MarkCrystal, Monogram, SnowWordmark, Avatar, AvatarStack, Pulse, Input, Textarea, Field } from "@snowztech/ui";
-import { ThemeToggle } from "@snowztech/ui/client";
+import { MarkCrystal, Monogram, SnowWordmark, Avatar, AvatarStack, Pulse, Input, Textarea, Field, Callout, Terminal } from "@snowztech/ui";
+import { ThemeToggle, CodeBlock } from "@snowztech/ui/client";
 import { Code } from "../../../components/code";
 import { Snippets } from "../../../components/snippets";
 
@@ -342,6 +342,89 @@ export default function Components() {
   if (matchMedia("(min-width: 1000px)").matches)
     document.querySelector(".sn-toc details").open = true;
 </script>`}</Code>
+      </Snippets>
+
+      <h2>Callout</h2>
+      <p>A boxed aside for notes and warnings in an article. Plain by default, or <code>--note</code>, <code>--tip</code>, <code>--warning</code>, <code>--danger</code>. The title is optional.</p>
+      <div className="sn-preview sn-preview--column">
+        <Callout title="Note" variant="note">Worktrees share commits, not files.</Callout>
+        <Callout title="Tip" variant="tip">Run <code>git worktree list</code> to see every worktree.</Callout>
+        <Callout title="Warning" variant="warning">This deletes the branch too.</Callout>
+        <Callout title="Danger" variant="danger">There is no undo.</Callout>
+        <Callout>A plain callout, no title.</Callout>
+      </div>
+      <Snippets>
+        <Code lang="html">{`<aside class="sn-callout sn-callout--warning">
+  <strong class="sn-callout__title">Warning</strong>
+  <p>This deletes the branch too.</p>
+</aside>`}</Code>
+        <Code lang="tsx">{`import { Callout } from "@snowztech/ui";
+
+<Callout variant="warning" title="Warning">
+  This deletes the branch too.
+</Callout>`}</Code>
+      </Snippets>
+
+      <h2>Code block</h2>
+      <p>A code block with a filename bar and a copy button. Works inside <code>.sn-prose</code>. In static HTML, leave <code>data-sn-copy</code> empty and the button copies the block&apos;s own code. Pass highlighted markup as children in React; <code>code</code> is still what gets copied.</p>
+      <div className="sn-preview sn-preview--column">
+        <CodeBlock filename="install.sh" code={`pnpm add @snowztech/ui\npnpm dev`} />
+      </div>
+      <Snippets>
+        <Code lang="html">{`<figure class="sn-code">
+  <figcaption class="sn-code__bar">
+    <span class="sn-code__name">install.sh</span>
+    <button class="sn-copy-btn" data-sn-copy aria-label="copy">
+      <svg class="sn-copy-btn__idle"><!-- copy icon --></svg>
+      <svg class="sn-copy-btn__copied"><!-- check icon --></svg>
+    </button>
+  </figcaption>
+  <pre><code>pnpm add @snowztech/ui</code></pre>
+</figure>`}</Code>
+        <Code lang="tsx">{`import { CodeBlock } from "@snowztech/ui/client";
+
+<CodeBlock filename="install.sh" code="pnpm add @snowztech/ui" />
+
+{/* with a highlighter */}
+<CodeBlock filename="main.go" code={source}>
+  <div dangerouslySetInnerHTML={{ __html: highlighted }} />
+</CodeBlock>`}</Code>
+      </Snippets>
+
+      <h2>Terminal</h2>
+      <p>A window frame for a fake session or a screenshot. Each child of the body is one line. Use <code>.sn-prompt</code> for commands and <code>__out</code> for output. An image or video fills the frame edge to edge.</p>
+      <div className="sn-preview sn-preview--column">
+        <Terminal title="~/dev/app">
+          <div><span className="sn-prompt" />git worktree add -b search ../app-search</div>
+          <div className="sn-terminal__out">Preparing worktree (new branch 'search')</div>
+          <div><span className="sn-prompt" />git worktree list</div>
+          <div className="sn-terminal__out">~/dev/app         5eda07d [main]{"\n"}~/dev/app-search  5eda07d [search]</div>
+        </Terminal>
+      </div>
+      <Snippets>
+        <Code lang="html">{`<div class="sn-terminal">
+  <div class="sn-terminal__bar"><span class="sn-terminal__title">~/dev/app</span></div>
+  <div class="sn-terminal__body">
+    <div><span class="sn-prompt"></span>git worktree add -b search ../app-search</div>
+    <div class="sn-terminal__out">Preparing worktree (new branch 'search')</div>
+  </div>
+</div>
+
+<!-- screenshot -->
+<div class="sn-terminal">
+  <div class="sn-terminal__bar"></div>
+  <div class="sn-terminal__body"><img src="/shot.png" alt="App screenshot"></div>
+</div>`}</Code>
+        <Code lang="tsx">{`import { Terminal } from "@snowztech/ui";
+
+<Terminal title="~/dev/app">
+  <div><span className="sn-prompt" />git worktree add -b search ../app-search</div>
+  <div className="sn-terminal__out">Preparing worktree (new branch 'search')</div>
+</Terminal>
+
+<Terminal>
+  <img src="/shot.png" alt="App screenshot" />
+</Terminal>`}</Code>
       </Snippets>
 
       <h2>Card</h2>

@@ -1,0 +1,51 @@
+.sn-terminal {
+  overflow: hidden;
+  border: 1px solid var(--sn-border-strong);
+  border-radius: var(--sn-r-lg);
+  background: var(--sn-bg-inset);
+  font-family: var(--sn-font-mono);
+}
+
+.sn-terminal__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 60px;
+  border-bottom: 1px solid var(--sn-border);
+  background: var(--sn-bg-elev-1);
+  color: var(--sn-fg-subtle);
+  font-size: var(--sn-text-xs);
+}
+/* Three window dots, drawn in one pseudo-element. */
+.sn-terminal__bar::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sn-fg-faint);
+  box-shadow: 14px 0 var(--sn-fg-faint), 28px 0 var(--sn-fg-faint);
+}
+.sn-terminal__title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.sn-terminal__body {
+  margin: 0;
+  padding: var(--sn-s-4) 18px;
+  overflow-x: auto;
+  color: var(--sn-fg);
+  font-size: var(--sn-text-sm);
+  line-height: 1.6;
+}
+/* Each child is one line, so spacing inside a line is kept as typed. */
+.sn-terminal__body > * { margin: 0; white-space: pre-wrap; }
+.sn-terminal__body:has(> img, > video) { padding: 0; }
+.sn-terminal__body > :is(img, video) { display: block; width: 100%; height: auto; }
+
+.sn-terminal__out { color: var(--sn-fg-muted); }
+
+@media (max-width: 600px) {
+  .sn-terminal__body { padding: 14px; font-size: var(--sn-text-xs); }
+}

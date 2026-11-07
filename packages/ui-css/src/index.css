@@ -17,5 +17,8 @@
 @import "./components/pulse.css";
 @import "./components/copy-button.css";
 @import "./components/prose.css";
+@import "./components/callout.css";
+@import "./components/code.css";
+@import "./components/terminal.css";
 @import "./components/toc.css";
 @import "./components/theme-toggle.css";

@@ -1,4 +1,5 @@
-// Wires every <button data-sn-copy="…"> on the page.
+// Wires every <button data-sn-copy="…"> on the page. Leave the value empty
+// inside a .sn-code block to copy that block's code.
 // On click: copies the attr's value, flips data-copied="true" for ~1.2s.
 // CSS handles the visual swap (.sn-copy-btn[data-copied="true"]).
 
@@ -24,8 +25,11 @@ async function copyValue(value: string): Promise<boolean> {
 }
 
 function onClick(this: HTMLElement) {
-  const value = this.getAttribute("data-sn-copy");
-  if (value === null) return;
+  // Empty attribute inside a .sn-code block copies the block's own code.
+  const value =
+    this.getAttribute("data-sn-copy") ||
+    this.closest(".sn-code")?.querySelector("pre")?.textContent;
+  if (!value) return;
   void copyValue(value).then((ok) => {
     if (!ok) return;
     this.setAttribute("data-copied", "true");
