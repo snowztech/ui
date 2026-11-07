@@ -1,6 +1,6 @@
 {
   "name": "@snowztech/ui-js",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Optional vanilla bindings for @snowztech/ui-css. Wires data-sn-* attributes for static HTML.",
   "license": "MIT",
   "author": {
