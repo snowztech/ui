@@ -2,3 +2,4 @@
 // Don't add it here; esbuild strips module-level directives during bundling.
 export * from "./theme-toggle";
 export * from "./copy-button";
+export * from "./code-block";

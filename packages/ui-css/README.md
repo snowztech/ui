@@ -57,6 +57,9 @@ Tokens prefix `--sn-`. Classes prefix `sn-`. Modifier classes use `--`.
 | `sn-copy-btn`     | uses `data-copied="true"`                          |
 | `sn-prose`        | styles the plain HTML of an article inside it      |
 | `sn-toc`, `sn-toc-layout` | contents box, sticky beside the text on wide screens |
+| `sn-callout`      | `--note --tip --warning --danger`, `__title`       |
+| `sn-code`         | `__bar __name`, code block with a filename and copy button |
+| `sn-terminal`     | `__bar __title __body __out`, window frame for a session or screenshot |
 | `sn-theme-toggle` | reads `[data-theme="light"]` from `<html>`         |
 
 ## Theming

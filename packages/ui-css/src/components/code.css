@@ -1,0 +1,41 @@
+.sn-code {
+  margin: 0 0 var(--sn-s-4);
+  overflow: hidden;
+  border: 1px solid var(--sn-border-subtle);
+  border-radius: var(--sn-r-lg);
+  background: var(--sn-bg-elev-1);
+}
+
+.sn-code__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sn-s-2);
+  min-height: 34px;
+  padding: 0 var(--sn-s-1) 0 var(--sn-s-4);
+  border-bottom: 1px solid var(--sn-border-subtle);
+  color: var(--sn-fg-subtle);
+  font-family: var(--sn-font-mono);
+  font-size: var(--sn-text-xs);
+}
+.sn-code__name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Loaded after prose.css, so this wins over .sn-prose pre. */
+.sn-code pre {
+  margin: 0;
+  padding: var(--sn-s-4) 18px;
+  overflow-x: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--sn-fg);
+  font-family: var(--sn-font-mono);
+  font-size: var(--sn-text-sm);
+  line-height: 1.6;
+  tab-size: 4;
+}
+.sn-code pre code { padding: 0; border: 0; background: none; font: inherit; }
+
+@media (max-width: 600px) {
+  .sn-code pre { padding: 14px; font-size: var(--sn-text-xs); }
+}
