@@ -42,6 +42,7 @@ init();
 | `data-sn-copy="<text>"`         | Copies text to clipboard, sets `data-copied="true"` for 1.2s |
 | `data-sn-theme-toggle`          | Toggles `[data-theme="light"]` on `<html>`, persists to localStorage |
 | `data-sn-storage-key="<key>"`   | Override the localStorage key used by the theme toggle  |
+| `data-sn-toc` on a `.sn-toc`    | Opens the list beside the text, marks the section being read with `aria-current="location"` |
 
 ## API
 
@@ -49,6 +50,7 @@ init();
 init(root?: ParentNode): void
 bindCopyButton(el: HTMLElement): void
 bindThemeToggle(el: HTMLElement): void
+bindToc(nav: HTMLElement): void
 getTheme(key?: string): "light" | "dark"
 setTheme(theme: "light" | "dark", key?: string): void
 toggleTheme(key?: string): "light" | "dark"

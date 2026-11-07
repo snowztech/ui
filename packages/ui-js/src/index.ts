@@ -15,4 +15,6 @@ export {
   type Theme,
 } from "./theme-toggle";
 
+export { bindToc, initTocs } from "./toc";
+
 export { init } from "./auto";

@@ -30,10 +30,19 @@
   .sn-toc-layout > .sn-toc summary {
     list-style: none;
     pointer-events: none;
-    color: var(--sn-fg-subtle);
-    font-size: var(--sn-text-xs);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    color: var(--sn-fg);
+    font-weight: 500;
   }
   .sn-toc-layout > .sn-toc summary::-webkit-details-marker { display: none; }
+  /* A rule down the side, and an accent edge on the section being read (ui-js data-sn-toc marks it). */
+  .sn-toc-layout > .sn-toc ul { border-left: 1px solid var(--sn-border-subtle); }
+  .sn-toc-layout > .sn-toc li + li { margin-top: 0; }
+  .sn-toc-layout > .sn-toc a {
+    display: block;
+    margin-left: -1px;
+    padding: 5px 0 5px var(--sn-s-4);
+    border-left: 2px solid transparent;
+    transition: color var(--sn-base) var(--sn-ease), border-color var(--sn-base) var(--sn-ease);
+  }
+  .sn-toc-layout > .sn-toc a[aria-current] { border-left-color: var(--sn-accent); }
 }
