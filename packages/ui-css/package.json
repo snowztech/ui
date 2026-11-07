@@ -1,6 +1,6 @@
 {
   "name": "@snowztech/ui-css",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Terminal-minimal CSS design system. Tokens, resets, and component classes. Framework-agnostic.",
   "license": "MIT",
   "author": {
