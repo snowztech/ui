@@ -1,5 +1,11 @@
 # @snowztech/ui-css
 
+## 0.6.0
+
+### Minor Changes
+
+- 2bf42a3: An empty `.sn-copy-btn` draws its copy and check icons in CSS, so static HTML needs no inline SVG: `<button class="sn-copy-btn" data-sn-copy="…" aria-label="copy"></button>`. Buttons with SVGs inside work as before. Set `--sn-copy-btn-size` to resize the icon.
+
 ## 0.5.0
 
 ### Minor Changes
