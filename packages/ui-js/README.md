@@ -8,18 +8,12 @@ If you're using `@snowztech/ui` (React), you don't need this package.
 
 ```html
 <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.2/dist/snowztech-ui.min.css">
+      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.6/dist/snowztech-ui.min.css">
 <script type="module"
-        src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js@0.2/dist/snowztech-ui.esm.js"></script>
+        src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js@0.3/dist/snowztech-ui.esm.js"></script>
 
-<button class="sn-copy-btn" data-sn-copy="hello@snowz.ai" aria-label="copy email">
-  <svg class="sn-copy-btn__idle"   width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-    <rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/>
-  </svg>
-  <svg class="sn-copy-btn__copied" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-    <path d="m4 12 5 5L20 6"/>
-  </svg>
-</button>
+<!-- an empty button draws its own icons -->
+<button class="sn-copy-btn" data-sn-copy="hello@snowz.ai" aria-label="copy email"></button>
 
 <button class="sn-theme-toggle" data-sn-theme-toggle aria-label="toggle theme">
   <span class="sn-theme-toggle__indicator"></span>

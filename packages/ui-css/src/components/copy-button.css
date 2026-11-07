@@ -19,6 +19,22 @@
   color: var(--sn-success);
 }
 
+/* An empty button draws its own icons, so static HTML needs no inline SVG. */
+.sn-copy-btn:empty::before {
+  content: "";
+  width: var(--sn-copy-btn-size, 14px);
+  height: var(--sn-copy-btn-size, 14px);
+  background: currentColor;
+  -webkit-mask: var(--sn-copy-btn-icon) center / contain no-repeat;
+  mask: var(--sn-copy-btn-icon) center / contain no-repeat;
+}
+.sn-copy-btn:empty {
+  --sn-copy-btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='11' height='11' rx='1.5'/%3E%3Cpath d='M5 15V5a1 1 0 0 1 1-1h10'/%3E%3C/svg%3E");
+}
+.sn-copy-btn:empty[data-copied="true"] {
+  --sn-copy-btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 12 5 5L20 6'/%3E%3C/svg%3E");
+}
+
 /* Hide the "copied" icon until the data attribute flips. */
 .sn-copy-btn .sn-copy-btn__copied { display: none; }
 .sn-copy-btn[data-copied="true"] .sn-copy-btn__copied { display: inline-flex; }

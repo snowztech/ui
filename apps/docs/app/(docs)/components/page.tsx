@@ -374,10 +374,7 @@ export default function Components() {
         <Code lang="html">{`<figure class="sn-code">
   <figcaption class="sn-code__bar">
     <span class="sn-code__name">install.sh</span>
-    <button class="sn-copy-btn" data-sn-copy aria-label="copy">
-      <svg class="sn-copy-btn__idle"><!-- copy icon --></svg>
-      <svg class="sn-copy-btn__copied"><!-- check icon --></svg>
-    </button>
+    <button class="sn-copy-btn" data-sn-copy aria-label="copy"></button>
   </figcaption>
   <pre><code>pnpm add @snowztech/ui</code></pre>
 </figure>`}</Code>

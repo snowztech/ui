@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
       <h2 id="static">via static HTML</h2>
       <p>One <code>&lt;link&gt;</code>. Plain pages, MDX, Astro, Hugo, anywhere.</p>
       <Code lang="html">{`<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.2/dist/snowztech-ui.min.css">
+      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.6/dist/snowztech-ui.min.css">
 
 <button class="sn-btn sn-btn--primary">Ship it</button>
 <span class="sn-pulse sn-pulse--success">
@@ -54,11 +54,10 @@ export default function RootLayout({ children }) {
 </span>`}</Code>
       <p>For interactive bits (copy buttons, theme toggle), add the JS file too.</p>
       <Code lang="html">{`<script type="module"
-        src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js@0.2/dist/snowztech-ui.esm.js"></script>
+        src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js@0.3/dist/snowztech-ui.esm.js"></script>
 
-<button class="sn-copy-btn" data-sn-copy="hello@snowz.ai" aria-label="copy">
-  <!-- icons -->
-</button>
+<!-- an empty button draws its own icons -->
+<button class="sn-copy-btn" data-sn-copy="hello@snowz.ai" aria-label="copy"></button>
 
 <button class="sn-theme-toggle" data-sn-theme-toggle aria-label="toggle theme">
   <span class="sn-theme-toggle__indicator"></span>
