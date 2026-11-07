@@ -1,6 +1,6 @@
 {
   "name": "@snowztech/ui-js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Optional vanilla bindings for @snowztech/ui-css. Wires data-sn-* attributes for static HTML.",
   "license": "MIT",
   "author": {
@@ -14,7 +14,9 @@
     "url": "git+https://github.com/snowztech/ui.git",
     "directory": "packages/ui-js"
   },
-  "bugs": { "url": "https://github.com/snowztech/ui/issues" },
+  "bugs": {
+    "url": "https://github.com/snowztech/ui/issues"
+  },
   "keywords": [
     "snowztech",
     "ui",
@@ -53,6 +55,10 @@
     "esbuild": "^0.27.7",
     "typescript": "^5.6.3"
   },
-  "engines": { "node": ">=18" },
-  "publishConfig": { "access": "public" }
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
