@@ -1,5 +1,11 @@
 # @snowztech/ui-css
 
+## 0.7.0
+
+### Minor Changes
+
+- 49babac: Contents beside the text get a sentence-case title, a rule down the side and an accent edge on the section being read. In ui-js, `data-sn-toc` opens the list beside the text and marks the section being read as the page scrolls.
+
 ## 0.6.0
 
 ### Minor Changes
