@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MarkCrystal, ChevronLeftIcon } from "@snowztech/ui";
+import { MarkSnowflake, ChevronLeftIcon } from "@snowztech/ui";
 import { ThemeToggle } from "@snowztech/ui/client";
 
 export default function ExamplesLayout({ children }: { children: React.ReactNode }) {
@@ -19,7 +19,7 @@ export default function ExamplesLayout({ children }: { children: React.ReactNode
         </Link>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 16, color: "var(--sn-fg-faint)" }}>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-            <MarkCrystal size={14} />
+            <MarkSnowflake size={14} />
             <span>example · built with @snowztech/ui</span>
           </span>
           <ThemeToggle />

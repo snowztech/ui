@@ -106,6 +106,23 @@ export const MarkHex = (p: MarkProps) => {
   );
 };
 
+// The snowztech mark: a six-arm snowflake with one arm cut through the others.
+export const MarkSnowflake = (p: MarkProps) => {
+  const id = React.useId();
+  return (
+    <svg {...baseProps(p, { fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" })}>
+      <defs>
+        <mask id={id}>
+          <rect width="32" height="32" fill="white" />
+          <path d="M7 10L25 22" stroke="black" strokeWidth={4.5} />
+        </mask>
+      </defs>
+      <path mask={`url(#${id})`} d="M16 4V28M7 22L25 10M11.5 8.5L16 12L20.5 8.5M11.5 23.5L16 20L20.5 23.5" />
+      <path d="M7 10L25 22" />
+    </svg>
+  );
+};
+
 export const MarkDotgrid = (p: MarkProps) => {
   const dots: React.ReactElement[] = [<circle key="c" cx="16" cy="16" r="2" fill="currentColor" />];
   for (let a = 0; a < 6; a++) {
@@ -129,7 +146,8 @@ export interface MarkVariant {
 }
 
 export const markVariants: MarkVariant[] = [
-  { id: "crystal",  name: "Crystal",    sub: "hex frame + diamond cut, canonical", Mark: MarkCrystal,  exportName: "MarkCrystal" },
+  { id: "snowflake", name: "Snowflake", sub: "cut snowflake, canonical",           Mark: MarkSnowflake, exportName: "MarkSnowflake" },
+  { id: "crystal",  name: "Crystal",    sub: "hex frame + diamond cut",            Mark: MarkCrystal,  exportName: "MarkCrystal" },
   { id: "sigil",    name: "Sigil",      sub: "chunky bars",                        Mark: MarkSigil,    exportName: "MarkSigil" },
   { id: "zflake",   name: "Z-Flake",    sub: "the Z of snowztech",                 Mark: MarkZFlake,   exportName: "MarkZFlake" },
   { id: "asterisk", name: "Asterisk",   sub: "mono-native, typographic",           Mark: MarkAsterisk, exportName: "MarkAsterisk" },
