@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#8ab4f8" stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square">
-  <polygon points="16,3 27,9.5 27,22.5 16,29 5,22.5 5,9.5"/>
-  <polygon points="16,9 22,16 16,23 10,16"/>
-  <line x1="16" y1="3" x2="16" y2="9"/>
-  <line x1="16" y1="23" x2="16" y2="29"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" style="color:#e8e8e8"><rect width="64" height="64" rx="12" fill="#0a0a0a"/><g transform="translate(-3.2 -3.2) scale(1.1)"><defs><mask id="slash-gap"><rect width="64" height="64" fill="white"/><path d="M14 20L50 44" stroke="black" stroke-width="9" stroke-linecap="round"/></mask></defs><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><g mask="url(#slash-gap)"><path d="M32 8V56M14 44L50 20M23 17L32 24L41 17M23 47L32 40L41 47"/></g><path d="M14 20L50 44"/></g></g></svg>

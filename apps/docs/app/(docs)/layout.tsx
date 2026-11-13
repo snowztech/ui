@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { Monogram, MarkCrystal, GithubIcon, MenuIcon } from "@snowztech/ui";
+import { Monogram, MarkSnowflake, GithubIcon, MenuIcon } from "@snowztech/ui";
 import { ThemeToggle } from "@snowztech/ui/client";
 import pkg from "@snowztech/ui/package.json";
 
@@ -38,7 +38,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
       />
       <aside className="docs-nav">
         <Link href="/" className="docs-brand">
-          <Monogram size={32} mark={MarkCrystal} radius={6} glyphScale={0.6} />
+          <Monogram size={32} mark={MarkSnowflake} radius={6} glyphScale={0.6} />
           <div className="docs-brand-text">
             <span className="docs-brand-name">snowztech<span style={{ color: "var(--sn-fg-muted)" }}>/ui</span></span>
             <span className="docs-brand-version">{version}</span>

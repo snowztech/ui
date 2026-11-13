@@ -1,4 +1,4 @@
-import { Monogram, MarkCrystal } from "@snowztech/ui";
+import { Monogram, MarkSnowflake } from "@snowztech/ui";
 import pkg from "@snowztech/ui/package.json";
 import { Code } from "../../components/code";
 import { Snippets } from "../../components/snippets";
@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="overview">
       <header className="overview-hero">
-        <Monogram size={48} mark={MarkCrystal} radius={8} glyphScale={0.55} />
+        <Monogram size={48} mark={MarkSnowflake} radius={8} glyphScale={0.55} />
         <h1>A personal design system.</h1>
         <p>
           Tokens, components, and brand marks. Mono-first. One accent. Built for{" "}
@@ -28,10 +28,7 @@ export default function Home() {
       </nav>
 
       <footer className="overview-meta">
-        v{pkg.version} · built by{" "}
-        <a href="https://github.com/lucasnevespereira" target="_blank" rel="noreferrer">
-          Lucas Neves Pereira
-        </a>
+        v{pkg.version} · <a href="https://snowztech.com">a snowztech project</a>
       </footer>
     </div>
   );

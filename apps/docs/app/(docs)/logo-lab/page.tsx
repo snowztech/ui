@@ -12,7 +12,7 @@ export default function LogoLab() {
         import it by name.
       </p>
 
-      <Code lang="ts">{`import { MarkCrystal } from "@snowztech/ui";`}</Code>
+      <Code lang="ts">{`import { MarkSnowflake } from "@snowztech/ui";`}</Code>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 24 }}>
         {markVariants.map(({ id, name, sub, Mark, exportName }) => (

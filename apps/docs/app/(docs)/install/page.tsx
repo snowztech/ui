@@ -27,13 +27,13 @@ export default function Install() {
       <p>Import the styles once at the root, then use components.</p>
       <Code lang="tsx" filename="app/layout.tsx">{`import "@snowztech/ui/styles.css";
 
-import { MarkCrystal } from "@snowztech/ui";
+import { MarkSnowflake } from "@snowztech/ui";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <MarkCrystal size={32} />
+        <MarkSnowflake size={32} />
         {children}
       </body>
     </html>
