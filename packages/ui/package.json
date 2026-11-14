@@ -40,6 +40,7 @@
     "dist",
     "src/styles.css",
     "src/tokens.css",
+    "src/fonts.css",
     "README.md",
     "LICENSE"
   ],
@@ -56,6 +57,7 @@
     },
     "./styles.css": "./src/styles.css",
     "./tokens.css": "./src/tokens.css",
+    "./fonts.css": "./src/fonts.css",
     "./package.json": "./package.json"
   },
   "scripts": {

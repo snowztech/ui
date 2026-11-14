@@ -1,2 +1,31 @@
-/* The two snowztech fonts, from Google Fonts. Optional: skip this file if you host them yourself. */
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+/* The snowztech fonts, shipped with the library: JetBrains Mono (frost), Geist and
+   Geist Mono (powder). Latin, one variable file per family, SIL Open Font License
+   (dist/fonts/*-OFL.txt).
+
+   font-display: optional means text never changes font while someone reads: if a
+   font isn't ready at first paint, that view keeps the fallback and the next page
+   uses the cached file. Preload the fonts your page uses so they are ready:
+
+   <link rel="preload" href="…/dist/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin> */
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/jetbrains-mono.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/geist.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("./fonts/geist-mono.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: optional;
+}

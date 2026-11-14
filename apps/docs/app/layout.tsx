@@ -15,12 +15,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+        {/* The fonts ship with @snowztech/ui-css. Frost is the default, so JetBrains Mono is preloaded. */}
+        <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="stylesheet" href="/fonts.css" />
         <script
           dangerouslySetInnerHTML={{
             __html: `try { var t = localStorage.getItem("theme"); if (t === "light") document.documentElement.setAttribute("data-theme", "light"); if (localStorage.getItem("mode") === "powder") document.documentElement.setAttribute("data-sn-mode", "powder"); } catch (e) {}`,

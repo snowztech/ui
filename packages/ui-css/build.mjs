@@ -32,6 +32,8 @@ await build({
 await cp(src("tokens.css"), dist("tokens.css"));
 await cp(src("base.css"), dist("base.css"));
 await cp(src("fonts.css"), dist("fonts.css"));
+// The font files and their licenses, next to fonts.css so its url()s resolve.
+await cp(resolve(here, "fonts"), dist("fonts"), { recursive: true });
 
 // Per-component files for advanced users / tree-shaking.
 const components = (await readdir(src("components"))).map((f) => f.replace(/\.css$/, ""));

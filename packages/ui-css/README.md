@@ -18,16 +18,20 @@ import "@snowztech/ui-css";
 
 ```html
 <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.8/dist/snowztech-ui.min.css">
+      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.9/dist/snowztech-ui.min.css">
 ```
 
 ## Fonts
 
+The fonts ship with the package: JetBrains Mono for frost, Geist and Geist Mono for powder. Latin, one variable file per family, SIL Open Font License. No request to Google.
+
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.8/dist/fonts.css">
+<!-- preload the fonts your mode uses: jetbrains-mono for frost, geist and geist-mono for powder -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.9/dist/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.9/dist/fonts.css">
 ```
 
-That loads JetBrains Mono, Geist and Geist Mono from Google Fonts. Skip it if you host them yourself.
+With a bundler, `import "@snowztech/ui-css/fonts.css"` and the files come along. They use `font-display: optional`: text never changes font while someone reads. If a font isn't ready at first paint, that view keeps the fallback and the next page uses the cached file. Preloading makes it ready in time.
 
 ## Options
 

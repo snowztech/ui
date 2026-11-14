@@ -26,6 +26,7 @@ export default function Install() {
       </details>
       <p>Import the styles once at the root, then use components.</p>
       <Code lang="tsx" filename="app/layout.tsx">{`import "@snowztech/ui/styles.css";
+import "@snowztech/ui/fonts.css"; // JetBrains Mono, Geist, Geist Mono, shipped with the lib
 
 import { MarkSnowflake } from "@snowztech/ui";
 
@@ -45,8 +46,8 @@ export default function RootLayout({ children }) {
 
       <h2 id="static">via static HTML</h2>
       <p>One <code>&lt;link&gt;</code>. Plain pages, MDX, Astro, Hugo, anywhere.</p>
-      <Code lang="html">{`<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.8/dist/snowztech-ui.min.css">
+      <Code lang="html">{`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.9/dist/fonts.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.9/dist/snowztech-ui.min.css">
 
 <button class="sn-btn sn-btn--primary">Ship it</button>
 <span class="sn-pulse sn-pulse--success">
@@ -54,7 +55,7 @@ export default function RootLayout({ children }) {
 </span>`}</Code>
       <p>For interactive bits (copy buttons, theme toggle), add the JS file too.</p>
       <Code lang="html">{`<script type="module"
-        src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js@0.3/dist/snowztech-ui.esm.js"></script>
+        src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js@0.9/dist/snowztech-ui.esm.js"></script>
 
 <!-- an empty button draws its own icons -->
 <button class="sn-copy-btn" data-sn-copy="hello@snowz.ai" aria-label="copy"></button>

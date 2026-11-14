@@ -37,10 +37,11 @@ import { MarkSnowflake } from "@snowztech/ui";
 ## Static HTML
 
 ```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.9/dist/fonts.css">
 <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.8/dist/snowztech-ui.min.css">
+      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.9/dist/snowztech-ui.min.css">
 <script type="module"
-        src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js@0.3/dist/snowztech-ui.esm.js"></script>
+        src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js@0.9/dist/snowztech-ui.esm.js"></script>
 
 <button class="sn-btn sn-btn--primary">Ship it</button>
 ```

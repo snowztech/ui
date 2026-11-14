@@ -13,9 +13,11 @@ const pub  = resolve(here, "..", "public");
 const copies = [
   ["packages/ui-css/dist/snowztech-ui.min.css", "snowztech-ui.css"],
   ["packages/ui-js/dist/snowztech-ui.esm.js",   "snowztech-ui.esm.js"],
+  ["packages/ui-css/dist/fonts.css",            "fonts.css"],
+  ["packages/ui-css/dist/fonts",                "fonts"],
 ];
 
 for (const [from, to] of copies) {
-  await cp(resolve(root, from), resolve(pub, to));
+  await cp(resolve(root, from), resolve(pub, to), { recursive: true });
   console.log("synced", to);
 }
