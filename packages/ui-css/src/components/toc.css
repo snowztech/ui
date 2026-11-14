@@ -9,7 +9,8 @@
 
 /* Wide screens: the contents leave the flow and sit sticky beside the text.
    The layout holds an optional header, the .sn-toc and the text, in that order. */
-.sn-toc-layout { display: grid; }
+/* minmax(0, 1fr): a wide code block or table must not stretch the column past the screen. */
+.sn-toc-layout { display: grid; grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 1000px) {
   .sn-toc-layout {
     grid-template-columns: minmax(0, 680px) 220px;
