@@ -1,7 +1,7 @@
 {
   "name": "@snowztech/ui-css",
   "version": "0.7.0",
-  "description": "Terminal-minimal CSS design system. Tokens, resets, and component classes. Framework-agnostic.",
+  "description": "The snowztech CSS design system. Tokens, resets, and component classes. Framework-agnostic.",
   "license": "MIT",
   "author": {
     "name": "Lucas Neves Pereira",
@@ -38,6 +38,8 @@
     "./tokens.css": "./dist/tokens.css",
     "./base": "./dist/base.css",
     "./base.css": "./dist/base.css",
+    "./fonts": "./dist/fonts.css",
+    "./fonts.css": "./dist/fonts.css",
     "./styles.css": "./dist/snowztech-ui.css",
     "./components/*": "./dist/components/*.css",
     "./package.json": "./package.json"

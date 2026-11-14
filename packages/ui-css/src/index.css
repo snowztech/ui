@@ -1,11 +1,20 @@
 @import "./tokens.css";
 @import "./base.css";
 
+@import "./components/layout.css";
+@import "./components/header.css";
+@import "./components/footer.css";
+@import "./components/faq.css";
+@import "./components/navlist.css";
 @import "./components/btn.css";
+@import "./components/icon-btn.css";
+@import "./components/segmented.css";
+@import "./components/tabs.css";
 @import "./components/input.css";
 @import "./components/field.css";
 @import "./components/file.css";
 @import "./components/card.css";
+@import "./components/table.css";
 @import "./components/badge.css";
 @import "./components/kbd.css";
 @import "./components/divider.css";

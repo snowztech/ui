@@ -1,0 +1,28 @@
+/* A square button holding one icon. Give it an aria-label. */
+.sn-icon-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--sn-control-md);
+  height: var(--sn-control-md);
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--sn-radius-control);
+  background: transparent;
+  color: var(--sn-fg-muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color var(--sn-transition), background var(--sn-transition), border-color var(--sn-transition);
+}
+.sn-icon-btn:hover { color: var(--sn-fg); background: var(--sn-hover); }
+.sn-icon-btn:active,
+.sn-icon-btn[aria-pressed="true"] { color: var(--sn-fg); background: var(--sn-pressed); }
+.sn-icon-btn:focus-visible { outline: none; border-color: var(--sn-accent); box-shadow: var(--sn-focus-ring); }
+.sn-icon-btn:disabled,
+.sn-icon-btn[aria-disabled="true"] { opacity: 0.4; cursor: not-allowed; background: transparent; }
+.sn-icon-btn--sm { width: var(--sn-control-sm); height: var(--sn-control-sm); }
+.sn-icon-btn--lg { width: var(--sn-control-lg); height: var(--sn-control-lg); }
+.sn-icon-btn--bordered { border-color: var(--sn-border-strong); }
+.sn-icon-btn--bordered:hover { border-color: var(--sn-fg-subtle); }

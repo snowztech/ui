@@ -15,12 +15,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <script>
     try {
       var t = localStorage.getItem("theme");
       if (t === "light") document.documentElement.setAttribute("data-theme", "light");
+      if (localStorage.getItem("mode") === "powder") document.documentElement.setAttribute("data-sn-mode", "powder");
     } catch (e) {}
   </script>
 
@@ -38,9 +39,16 @@
   <main>
     <div class="topbar">
       <span class="sn-meta">snowztech/ui · static demo</span>
-      <button class="sn-theme-toggle" data-sn-theme-toggle aria-label="toggle theme">
-        <span class="sn-theme-toggle__indicator"></span>
-      </button>
+      <span style="display: inline-flex; align-items: center; gap: 4px">
+        <!-- Demo only: a product picks one mode and never shows this. -->
+        <span class="voice" role="group" aria-label="mode">
+          <button class="sn-btn sn-btn--sm" data-voice="frost">frost</button>
+          <button class="sn-btn sn-btn--sm" data-voice="powder">powder</button>
+        </span>
+        <button class="sn-theme-toggle" data-sn-theme-toggle aria-label="toggle theme">
+          <span class="sn-theme-toggle__indicator"></span>
+        </button>
+      </span>
     </div>
 
     <h1>Hello, static page.</h1>
@@ -94,26 +102,12 @@
 
     <h2>Mark + monogram</h2>
     <div class="row">
-      <svg class="sn-mark sn-mark--lg" viewBox="0 0 32 32" fill="none" stroke="currentColor"
-           stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square" aria-hidden="true">
-        <polygon points="16,3 27,9.5 27,22.5 16,29 5,22.5 5,9.5"/>
-        <polygon points="16,9 22,16 16,23 10,16"/>
-        <line x1="16" y1="3" x2="16" y2="9"/>
-        <line x1="16" y1="23" x2="16" y2="29"/>
-      </svg>
+      <svg class="sn-mark sn-mark--lg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><mask id="sn-cut-1"><rect width="32" height="32" fill="white"/><path d="M7 10L25 22" stroke="black" stroke-width="4.5"/></mask><path mask="url(#sn-cut-1)" d="M16 4V28M7 22L25 10M11.5 8.5L16 12L20.5 8.5M11.5 23.5L16 20L20.5 23.5"/><path d="M7 10L25 22"/></svg>
       <span class="sn-monogram sn-monogram--md">
-        <svg class="sn-mark sn-mark--md" viewBox="0 0 32 32" fill="none" stroke="currentColor"
-             stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square" aria-hidden="true">
-          <polygon points="16,3 27,9.5 27,22.5 16,29 5,22.5 5,9.5"/>
-          <polygon points="16,9 22,16 16,23 10,16"/>
-        </svg>
+        <svg class="sn-mark sn-mark--md" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><mask id="sn-cut-2"><rect width="32" height="32" fill="white"/><path d="M7 10L25 22" stroke="black" stroke-width="4.5"/></mask><path mask="url(#sn-cut-2)" d="M16 4V28M7 22L25 10M11.5 8.5L16 12L20.5 8.5M11.5 23.5L16 20L20.5 23.5"/><path d="M7 10L25 22"/></svg>
       </span>
       <span class="sn-monogram sn-monogram--md sn-monogram--inverse">
-        <svg class="sn-mark sn-mark--md" viewBox="0 0 32 32" fill="none" stroke="currentColor"
-             stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="square" aria-hidden="true">
-          <polygon points="16,3 27,9.5 27,22.5 16,29 5,22.5 5,9.5"/>
-          <polygon points="16,9 22,16 16,23 10,16"/>
-        </svg>
+        <svg class="sn-mark sn-mark--md" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><mask id="sn-cut-3"><rect width="32" height="32" fill="white"/><path d="M7 10L25 22" stroke="black" stroke-width="4.5"/></mask><path mask="url(#sn-cut-3)" d="M16 4V28M7 22L25 10M11.5 8.5L16 12L20.5 8.5M11.5 23.5L16 20L20.5 23.5"/><path d="M7 10L25 22"/></svg>
       </span>
       <span class="sn-wordmark" style="--sn-wordmark-size: 22px">
         snowztech<span class="sn-wordmark__dot">.</span>
@@ -147,5 +141,27 @@
     <hr class="sn-divider" style="margin: 56px 0 24px">
     <p class="sn-meta">view source · this whole page is one html file</p>
   </main>
+  <style>
+    .voice { display: inline-flex; border: 1px solid var(--sn-border-strong); border-radius: var(--sn-radius-control); overflow: hidden; }
+    .voice .sn-btn { border: 0; border-radius: 0; font-family: var(--sn-font-mono); color: var(--sn-fg-muted); }
+    .voice .sn-btn[aria-pressed="true"] { background: var(--sn-fg); color: var(--sn-fg-inverse); }
+  </style>
+  <script>
+    (function () {
+      var root = document.documentElement, buttons = document.querySelectorAll("[data-voice]");
+      function show() {
+        var powder = root.dataset.snMode === "powder";
+        buttons.forEach(function (b) { b.setAttribute("aria-pressed", String((b.dataset.voice === "powder") === powder)); });
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener("click", function () {
+          if (b.dataset.voice === "powder") root.dataset.snMode = "powder"; else delete root.dataset.snMode;
+          try { localStorage.setItem("mode", b.dataset.voice); } catch (e) {}
+          show();
+        });
+      });
+      show();
+    })();
+  </script>
 </body>
 </html>

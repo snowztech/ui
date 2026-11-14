@@ -5,19 +5,50 @@ html, body { margin: 0; padding: 0; }
 html, body { height: 100%; }
 
 body {
-  font-family: var(--sn-font-mono);
-  font-size: var(--sn-text-sm);
+  font-family: var(--sn-font-body);
+  font-size: var(--sn-body-size);
   line-height: var(--sn-leading-normal);
   color: var(--sn-fg);
   background: var(--sn-bg);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* A section with its own mode needs to re-read the body font, or its text
+   keeps the font inherited from <body>. */
+[data-sn-mode] { font-family: var(--sn-font-body); font-size: var(--sn-body-size); }
+
+/* Body and headings follow data-sn-mode: frost (mono) by default. */
+h1, h2 {
+  font-family: var(--sn-font-display);
+  font-weight: var(--sn-display-weight);
+  letter-spacing: var(--sn-display-tracking);
+  line-height: var(--sn-leading-tight);
+  text-wrap: balance;
+}
+h3, h4 { font-family: var(--sn-font-body); font-weight: 600; letter-spacing: -0.01em; }
+p { text-wrap: pretty; }
+code, kbd, pre, samp { font-family: var(--sn-font-mono); font-variant-ligatures: none; }
 
 ::selection { background: var(--sn-accent-soft); color: var(--sn-fg); }
 
 a { color: var(--sn-accent); text-decoration: none; }
 a:hover { color: var(--sn-accent-hover); }
 
+:focus-visible { outline: 2px solid var(--sn-accent); outline-offset: 2px; }
+/* Text links underline instead of getting a box around the words. Links
+   with a class are components and bring their own focus style. */
+a:not([class]):focus-visible { outline: none; text-decoration: underline 2px var(--sn-accent); text-underline-offset: 4px; }
+
 @keyframes sn-spin  { to { transform: rotate(360deg); } }
 @keyframes sn-pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 @keyframes sn-blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

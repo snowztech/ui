@@ -1,9 +1,11 @@
 .sn-code {
+  width: 100%;
+  min-width: 0;
   margin: 0 0 var(--sn-s-4);
   overflow: hidden;
   border: 1px solid var(--sn-border-subtle);
-  border-radius: var(--sn-r-lg);
-  background: var(--sn-bg-elev-1);
+  border-radius: var(--sn-radius-surface);
+  background: var(--sn-bg-inset);
 }
 
 .sn-code__bar {
@@ -11,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--sn-s-2);
-  min-height: 34px;
+  min-height: var(--sn-control-md);
   padding: 0 var(--sn-s-1) 0 var(--sn-s-4);
   border-bottom: 1px solid var(--sn-border-subtle);
   color: var(--sn-fg-subtle);
@@ -23,7 +25,7 @@
 /* Loaded after prose.css, so this wins over .sn-prose pre. */
 .sn-code pre {
   margin: 0;
-  padding: var(--sn-s-4) 18px;
+  padding: var(--sn-s-4);
   overflow-x: auto;
   border: 0;
   border-radius: 0;
@@ -35,7 +37,17 @@
   tab-size: 4;
 }
 .sn-code pre code { padding: 0; border: 0; background: none; font: inherit; }
+/* <pre class="sn-code"> without the wrapper works too. */
+pre.sn-code {
+  padding: var(--sn-s-4);
+  overflow-x: auto;
+  color: var(--sn-fg);
+  font-family: var(--sn-font-mono);
+  font-size: var(--sn-text-sm);
+  line-height: 1.6;
+}
+pre.sn-code code { font: inherit; }
 
 @media (max-width: 600px) {
-  .sn-code pre { padding: 14px; font-size: var(--sn-text-xs); }
+  .sn-code pre { padding: var(--sn-s-3); font-size: var(--sn-text-xs); }
 }

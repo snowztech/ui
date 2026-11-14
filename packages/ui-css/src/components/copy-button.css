@@ -8,12 +8,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--sn-r-xs);
-  transition: color var(--sn-fast) var(--sn-ease),
-              border-color var(--sn-fast) var(--sn-ease);
+  border-radius: var(--sn-radius-chip);
+  transition: color var(--sn-transition), background var(--sn-transition);
 }
-.sn-copy-btn:hover { color: var(--sn-fg); }
-.sn-copy-btn:focus-visible { outline: 1px solid var(--sn-accent); outline-offset: 1px; }
+.sn-copy-btn:hover { color: var(--sn-fg); background: var(--sn-hover); }
+.sn-copy-btn:focus-visible { outline: none; border-color: var(--sn-accent); box-shadow: var(--sn-focus-ring); }
 .sn-copy-btn[data-copied="true"],
 .sn-copy-btn[data-copied="true"]:hover {
   color: var(--sn-success);
@@ -39,3 +38,4 @@
 .sn-copy-btn .sn-copy-btn__copied { display: none; }
 .sn-copy-btn[data-copied="true"] .sn-copy-btn__copied { display: inline-flex; }
 .sn-copy-btn[data-copied="true"] .sn-copy-btn__idle   { display: none; }
+.sn-copy-btn:active { background: var(--sn-pressed); }

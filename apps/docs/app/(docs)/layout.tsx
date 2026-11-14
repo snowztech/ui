@@ -3,115 +3,38 @@ import Link from "next/link";
 import { Monogram, MarkSnowflake, GithubIcon, MenuIcon } from "@snowztech/ui";
 import { ThemeToggle } from "@snowztech/ui/client";
 import pkg from "@snowztech/ui/package.json";
-
-const version = `v${pkg.version}`;
-
-type NavLink = { href: string; label: string; external?: boolean };
-
-const docsLinks: NavLink[] = [
-  { href: "/", label: "overview" },
-  { href: "/install", label: "install" },
-  { href: "/logo-lab", label: "logo lab" },
-];
-
-const apiLinks: NavLink[] = [
-  { href: "/tokens", label: "tokens" },
-  { href: "/components", label: "components" },
-  { href: "/icons", label: "icons" },
-];
-
-const exampleLinks: NavLink[] = [
-  { href: "/examples/link-in-bio", label: "link in bio" },
-  { href: "/examples/personal-page", label: "personal page" },
-  { href: "/examples/saas-landing", label: "saas landing" },
-  { href: "/examples/dashboard", label: "dashboard" },
-];
+import { ModeToggle } from "../../components/mode-toggle";
+import { DocsNav } from "../../components/docs-nav";
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="docs-shell">
-      <input
-        type="checkbox"
-        id="docs-nav-toggle"
-        className="docs-nav-toggle-input"
-        aria-hidden="true"
-      />
+      <input type="checkbox" id="docs-nav-toggle" className="docs-nav-toggle-input" aria-hidden="true" />
       <aside className="docs-nav">
         <Link href="/" className="docs-brand">
           <Monogram size={32} mark={MarkSnowflake} radius={6} glyphScale={0.6} />
           <div className="docs-brand-text">
             <span className="docs-brand-name">snowztech<span style={{ color: "var(--sn-fg-muted)" }}>/ui</span></span>
-            <span className="docs-brand-version">{version}</span>
+            <span className="docs-brand-version">v{pkg.version}</span>
           </div>
         </Link>
-
-        {[
-          { title: "docs", links: docsLinks },
-          { title: "api", links: apiLinks },
-          { title: "examples", links: exampleLinks },
-        ].map(({ title, links }) => (
-          <React.Fragment key={title}>
-            <h2>{title}</h2>
-            {links.map((l) =>
-              l.external
-                ? <a key={l.href} href={l.href}>{l.label}</a>
-                : <Link key={l.href} href={l.href}>{l.label}</Link>
-            )}
-          </React.Fragment>
-        ))}
-
-        <div className="docs-nav-footer">
-          <a
-            href="https://github.com/snowztech/ui"
-            target="_blank"
-            rel="noreferrer"
-            className="docs-footer-link"
-          >
-            <GithubIcon size={14} /> github
-          </a>
-        </div>
+        <DocsNav />
       </aside>
 
-      <label
-        htmlFor="docs-nav-toggle"
-        className="docs-nav-backdrop"
-        aria-hidden="true"
-      />
+      <label htmlFor="docs-nav-toggle" className="docs-nav-backdrop" aria-hidden="true" />
 
       <div className="docs-content">
         <header className="docs-topbar">
-          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-            <label
-              htmlFor="docs-nav-toggle"
-              className="docs-nav-toggle-btn"
-              aria-label="toggle navigation"
-            >
-              <MenuIcon size={16} />
-            </label>
-            <span style={{ color: "var(--sn-fg-faint)", fontSize: "var(--sn-text-2xs)" }}>
-              {version}
-            </span>
-          </div>
-          <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-            <a
-              href="/demo.html"
-              target="_blank"
-              rel="noreferrer"
-              className="docs-topbar-link"
-              title="static html demo"
-            >
-              demo
-            </a>
-            <a
-              href="https://github.com/snowztech/ui"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="github"
-              className="docs-icon-btn"
-            >
+          <label htmlFor="docs-nav-toggle" className="sn-icon-btn sn-icon-btn--sm docs-nav-toggle-btn" aria-label="toggle navigation">
+            <MenuIcon size={16} />
+          </label>
+          <div className="docs-topbar-actions">
+            <ModeToggle />
+            <a href="/demo.html" target="_blank" rel="noreferrer" className="sn-btn sn-btn--ghost sn-btn--sm">demo</a>
+            <a href="https://github.com/snowztech/ui" target="_blank" rel="noreferrer" aria-label="github" className="sn-icon-btn sn-icon-btn--sm">
               <GithubIcon size={16} />
             </a>
-            <ThemeToggle />
+            <ThemeToggle className="sn-theme-toggle--sm" />
           </div>
         </header>
         <main className="docs-main">{children}</main>

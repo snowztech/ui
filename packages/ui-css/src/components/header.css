@@ -1,0 +1,43 @@
+/* Site header: the brand on the left, a few links on the right. */
+.sn-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sn-s-6);
+  min-height: 64px;
+}
+
+.sn-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--sn-fg);
+  font-family: var(--sn-font-display);
+  font-size: var(--sn-text-md);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+.sn-brand:hover { color: var(--sn-fg); }
+.sn-brand > :is(img, svg) { width: 24px; height: 24px; flex-shrink: 0; }
+
+.sn-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sn-s-5);
+  font-size: var(--sn-text-base);
+}
+.sn-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sn-fg-muted);
+  text-decoration: none;
+  transition: color var(--sn-transition);
+}
+.sn-nav a:hover,
+.sn-nav a[aria-current] { color: var(--sn-fg); }
+
+@media (max-width: 420px) {
+  .sn-header, .sn-nav { gap: var(--sn-s-3); }
+}

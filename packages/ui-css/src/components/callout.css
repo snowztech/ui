@@ -5,7 +5,7 @@
   padding: var(--sn-s-3) var(--sn-s-4);
   border: 1px solid var(--sn-border);
   border-left: 2px solid var(--sn-callout-color);
-  border-radius: var(--sn-r-xs);
+  border-radius: var(--sn-radius-control);
   background: var(--sn-callout-bg);
   color: var(--sn-fg-muted);
   font-size: var(--sn-text-sm);
@@ -20,6 +20,7 @@
   display: block;
   margin-bottom: var(--sn-s-1);
   color: var(--sn-callout-color);
+  font-family: var(--sn-font-mono);
   font-size: var(--sn-text-2xs);
   font-weight: 600;
   letter-spacing: 0.04em;

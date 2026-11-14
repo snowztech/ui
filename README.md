@@ -1,6 +1,6 @@
 <div align="center">
   <h1>snowztech / ui</h1>
-  <p>Terminal-minimal design system. Static HTML, React, anywhere.</p>
+  <p>The snowztech design system. Static HTML, React, anywhere.</p>
   <p>
     <a href="https://www.npmjs.com/package/@snowztech/ui"><img src="https://img.shields.io/npm/v/@snowztech/ui.svg?label=@snowztech/ui&color=8ab4f8&labelColor=0a0a0a" alt="npm @snowztech/ui"></a>
     <a href="https://www.npmjs.com/package/@snowztech/ui-css"><img src="https://img.shields.io/npm/v/@snowztech/ui-css.svg?label=@snowztech/ui-css&color=8ab4f8&labelColor=0a0a0a" alt="npm @snowztech/ui-css"></a>
@@ -9,6 +9,15 @@
 </div>
 
 ---
+
+Everything is set in JetBrains Mono by default. Two optional attributes on `<html>`:
+
+```html
+<html data-sn-mode="powder" data-sn-accent="glacier">
+```
+
+- `data-sn-mode`: `frost` (default, all JetBrains Mono) or `powder` (Geist, with Geist Mono for labels, numbers and code).
+- `data-sn-accent`: `ice` (default, blue), `glacier` (turquoise) or `neutral` (no color). Hover and soft shades are derived.
 
 CSS is the contract. The same `sn-*` classes power the React build, vanilla HTML pages, and any future Vue/Svelte/Solid wrapper. Pick the package that matches your stack.
 
@@ -20,16 +29,16 @@ pnpm add @snowztech/ui
 
 ```tsx
 import "@snowztech/ui/styles.css";
-import { MarkCrystal } from "@snowztech/ui";
+import { MarkSnowflake } from "@snowztech/ui";
 
-<MarkCrystal size={32} />
+<MarkSnowflake size={32} />
 ```
 
 ## Static HTML
 
 ```html
 <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.6/dist/snowztech-ui.min.css">
+      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.8/dist/snowztech-ui.min.css">
 <script type="module"
         src="https://cdn.jsdelivr.net/npm/@snowztech/ui-js@0.3/dist/snowztech-ui.esm.js"></script>
 
@@ -67,7 +76,11 @@ pnpm dev          # all packages + docs in watch mode
 pnpm dev:docs     # just the docs
 pnpm build        # build everything
 pnpm typecheck
+pnpm lint:css     # components use tokens, never raw radius, timing or color
+pnpm test         # design rules on every docs page: heights, radii, contrast, phone width
 ```
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for how changes get into the system.
 
 The docs site dogfoods all three packages, including a `/demo.html` page proving the no-bundler path works.
 

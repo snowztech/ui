@@ -1,10 +1,13 @@
 .sn-card {
   background: transparent;
   border: 1px solid var(--sn-border);
-  border-radius: var(--sn-r-xs);
-  padding: var(--sn-s-5);
+  border-radius: var(--sn-radius-surface);
+  padding: var(--sn-pad-surface);
 }
-.sn-card--rounded { border-radius: var(--sn-r-lg); }
+/* Kept so old markup still works. Every card is rounded now. */
+/* Deprecated: cards are rounded by default. Removed in 0.9. */
+.sn-card--rounded { border-radius: var(--sn-radius-surface); }
+.sn-card--raised { background: var(--sn-bg-elev-1); }
 .sn-card--accent {
   border-color: var(--sn-accent-border);
   background: var(--sn-accent-soft);

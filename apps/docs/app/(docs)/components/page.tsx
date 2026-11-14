@@ -1,4 +1,5 @@
-import { MarkCrystal, Monogram, SnowWordmark, Avatar, AvatarStack, Pulse, Input, Textarea, Field, Callout, Terminal } from "@snowztech/ui";
+import { MarkSnowflake, Monogram, SnowWordmark, Avatar, AvatarStack, Pulse, Input, Textarea, Field, Callout, Terminal, IconButton, GithubIcon, MenuIcon } from "@snowztech/ui";
+import { SegmentedDemo, TabsDemo } from "../../../components/new-demos";
 import { ThemeToggle, CodeBlock } from "@snowztech/ui/client";
 import { Code } from "../../../components/code";
 import { Snippets } from "../../../components/snippets";
@@ -12,36 +13,49 @@ export default function Components() {
       </p>
 
       <h2>Mark</h2>
-      <p>The brand glyph. SVG, scales with <code>size</code>, colors via <code>currentColor</code>.</p>
+      <p>The snowztech snowflake. SVG, scales with <code>size</code>, colors via <code>currentColor</code>.</p>
       <div className="sn-preview">
-        <MarkCrystal size={20} />
-        <MarkCrystal size={32} />
-        <MarkCrystal size={48} />
-        <span style={{ color: "var(--sn-accent)" }}><MarkCrystal size={64} /></span>
+        <MarkSnowflake size={20} />
+        <MarkSnowflake size={32} />
+        <MarkSnowflake size={48} />
+        <MarkSnowflake size={64} />
       </div>
       <Snippets>
-        <Code lang="html">{`<svg class="sn-mark sn-mark--lg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-  <!-- crystal paths… -->
-</svg>
+        <Code lang="html">{`<svg class="sn-mark sn-mark--lg" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <mask id="sn-cut"><rect width="32" height="32" fill="white"/><path d="M7 10L25 22" stroke="black" stroke-width="4.5"/></mask>
+  <path mask="url(#sn-cut)" d="M16 4V28M7 22L25 10M11.5 8.5L16 12L20.5 8.5M11.5 23.5L16 20L20.5 23.5"/>
+  <path d="M7 10L25 22"/>
+</svg>`}</Code>
+        <Code lang="tsx">{`import { MarkSnowflake } from "@snowztech/ui";
 
-<!-- pre-built sprite -->
-<svg class="sn-mark sn-mark--lg"><use href="/icons/marks.svg#crystal"/></svg>`}</Code>
-        <Code lang="tsx">{`import { MarkCrystal } from "@snowztech/ui";
-
-<MarkCrystal size={48} />
-<MarkCrystal size="lg" />
-<MarkCrystal size={64} color="var(--sn-accent)" />`}</Code>
+<MarkSnowflake size={48} />
+<MarkSnowflake size="lg" />
+<MarkSnowflake size={64} color="var(--sn-fg)" />`}</Code>
       </Snippets>
       <p style={{ color: "var(--sn-fg-muted)", fontSize: "var(--sn-text-xs)" }}>
-        Seven other variants live in the <a href="/logo-lab">logo lab</a>.
+        Earlier explorations live in the <a href="/logo-lab">logo lab</a>.
       </p>
+
+      <h2>Label</h2>
+      <p>The small uppercase label above a headline or a section. Mono, tracked, muted.</p>
+      <div className="sn-preview">
+        <span className="sn-meta">latest releases</span>
+        <span className="sn-meta sn-meta--accent">how it works</span>
+        <span className="sn-meta sn-meta--subtle">macos 14 · apple silicon</span>
+      </div>
+      <Snippets labels={["html / react"]}>
+        <Code lang="html">{`<span class="sn-meta">latest releases</span>
+<span class="sn-meta sn-meta--accent">how it works</span>
+<span class="sn-meta sn-meta--subtle">macos 14 · apple silicon</span>`}</Code>
+      </Snippets>
 
       <h2>Monogram</h2>
       <p>Wraps any mark in a tile. App icons, brand stamps.</p>
       <div className="sn-preview">
-        <Monogram size={48} mark={MarkCrystal} radius={6} />
-        <Monogram size={64} mark={MarkCrystal} radius={10} />
-        <Monogram size={64} mark={MarkCrystal} bg="#f7f7f5" fg="#161616" radius={10} />
+        <Monogram size={48} mark={MarkSnowflake} radius={6} />
+        <Monogram size={64} mark={MarkSnowflake} radius={10} />
+        <Monogram size={64} mark={MarkSnowflake} bg="#f7f7f5" fg="#161616" radius={10} />
       </div>
       <Snippets>
         <Code lang="html">{`<span class="sn-monogram sn-monogram--md">
@@ -51,10 +65,10 @@ export default function Components() {
 <span class="sn-monogram sn-monogram--inverse">
   <svg class="sn-mark sn-mark--md"><!-- mark --></svg>
 </span>`}</Code>
-        <Code lang="tsx">{`import { Monogram, MarkCrystal } from "@snowztech/ui";
+        <Code lang="tsx">{`import { Monogram, MarkSnowflake } from "@snowztech/ui";
 
-<Monogram size={64} mark={MarkCrystal} />
-<Monogram size={64} mark={MarkCrystal} bg="#f7f7f5" fg="#161616" radius={10} />`}</Code>
+<Monogram size={64} mark={MarkSnowflake} />
+<Monogram size={64} mark={MarkSnowflake} bg="#f7f7f5" fg="#161616" radius={10} />`}</Code>
       </Snippets>
 
       <h2>Avatar</h2>
@@ -150,17 +164,68 @@ export default function Components() {
           <button className="sn-btn sn-btn--secondary sn-btn--lg">Large</button>
         </div>
       </div>
-      <Snippets labels={["html / react"]}>
-        <Code lang="tsx">{`{/* variants */}
-<button className="sn-btn sn-btn--primary">Primary</button>
-<button className="sn-btn sn-btn--secondary">Secondary</button>
-<button className="sn-btn sn-btn--ghost">Ghost</button>
-<button className="sn-btn sn-btn--accent">Accent</button>
-<button className="sn-btn sn-btn--danger">Danger</button>
+      <Snippets>
+        <Code lang="html">{`<button class="sn-btn sn-btn--primary">Primary</button>
+<button class="sn-btn sn-btn--secondary sn-btn--sm">Small</button>
+<a class="sn-btn sn-btn--accent sn-btn--lg" href="/download">Download</a>`}</Code>
+        <Code lang="tsx">{`import { Button } from "@snowztech/ui";
 
-{/* sizes */}
-<button className="sn-btn sn-btn--primary sn-btn--sm">Small</button>
-<button className="sn-btn sn-btn--primary sn-btn--lg">Large</button>`}</Code>
+<Button variant="primary">Primary</Button>
+<Button size="sm">Small</Button>
+<Button variant="accent" size="lg" href="/download">Download</Button>`}</Code>
+      </Snippets>
+
+      <h2>Icon button</h2>
+      <p>One icon, no text, so it needs an <code>aria-label</code>. Same heights as buttons.</p>
+      <div className="sn-preview">
+        <IconButton aria-label="menu" size="sm"><MenuIcon size={16} /></IconButton>
+        <IconButton aria-label="github"><GithubIcon size={16} /></IconButton>
+        <IconButton aria-label="github" bordered><GithubIcon size={16} /></IconButton>
+        <IconButton aria-label="github" size="lg" bordered><GithubIcon size={18} /></IconButton>
+      </div>
+      <Snippets>
+        <Code lang="html">{`<button class="sn-icon-btn" aria-label="menu">…svg…</button>
+<button class="sn-icon-btn sn-icon-btn--sm sn-icon-btn--bordered" aria-label="github">…svg…</button>`}</Code>
+        <Code lang="tsx">{`import { IconButton, GithubIcon } from "@snowztech/ui";
+
+<IconButton aria-label="github" size="sm" bordered>
+  <GithubIcon size={16} />
+</IconButton>`}</Code>
+      </Snippets>
+
+      <h2>Segmented</h2>
+      <p>A few options, one picked. Buttons use <code>aria-pressed</code>, links use <code>aria-current</code>.</p>
+      <div className="sn-preview">
+        <SegmentedDemo />
+      </div>
+      <Snippets>
+        <Code lang="html">{`<div class="sn-segmented" role="group" aria-label="view">
+  <button aria-pressed="true">list</button>
+  <button aria-pressed="false">grid</button>
+</div>`}</Code>
+        <Code lang="tsx">{`import { Segmented } from "@snowztech/ui/client";
+
+<Segmented label="view" options={["list", "grid"]} value={view} onChange={setView} />`}</Code>
+      </Snippets>
+
+      <h2>Tabs</h2>
+      <p>Views of the same thing. In static HTML, ui-js wires clicks and arrow keys.</p>
+      <div className="sn-preview sn-preview--column">
+        <TabsDemo />
+      </div>
+      <Snippets>
+        <Code lang="html">{`<div class="sn-tabs" role="tablist">
+  <button role="tab" aria-selected="true" aria-controls="p1">Overview</button>
+  <button role="tab" aria-selected="false" aria-controls="p2">Usage</button>
+</div>
+<div id="p1" role="tabpanel">…</div>
+<div id="p2" role="tabpanel" hidden>…</div>`}</Code>
+        <Code lang="tsx">{`import { Tabs } from "@snowztech/ui/client";
+
+<Tabs items={[
+  { label: "Overview", content: <p>…</p> },
+  { label: "Usage", content: <p>…</p> },
+]} />`}</Code>
       </Snippets>
 
       <h2>Badges</h2>
@@ -171,12 +236,14 @@ export default function Components() {
         <span className="sn-badge sn-badge--warning">warn</span>
         <span className="sn-badge sn-badge--danger">err</span>
       </div>
-      <Snippets labels={["html / react"]}>
-        <Code lang="tsx">{`<span className="sn-badge">default</span>
-<span className="sn-badge sn-badge--accent">accent</span>
-<span className="sn-badge sn-badge--success">ok</span>
-<span className="sn-badge sn-badge--warning">warn</span>
-<span className="sn-badge sn-badge--danger">err</span>`}</Code>
+      <Snippets>
+        <Code lang="html">{`<span class="sn-badge">default</span>
+<span class="sn-badge sn-badge--success">ok</span>`}</Code>
+        <Code lang="tsx">{`import { Badge, Kbd } from "@snowztech/ui";
+
+<Badge>default</Badge>
+<Badge variant="success">ok</Badge>
+<Kbd>⌘</Kbd><Kbd>K</Kbd>`}</Code>
       </Snippets>
 
       <h2>Input</h2>
@@ -222,7 +289,7 @@ export default function Components() {
       </Snippets>
 
       <h2>File input</h2>
-      <p>Styled via <code>::file-selector-button</code> — no JS, native input. Works in React too: <code>&lt;input type=&quot;file&quot; className=&quot;sn-file&quot; /&gt;</code>.</p>
+      <p>A native file input, styled with <code>::file-selector-button</code>. No JS. In React: <code>&lt;input type=&quot;file&quot; className=&quot;sn-file&quot; /&gt;</code>.</p>
       <div className="sn-preview sn-preview--column">
         <input type="file" className="sn-file" />
         <input type="file" className="sn-file" disabled />
@@ -419,36 +486,182 @@ export default function Components() {
       </Snippets>
 
       <h2>Card</h2>
-      <p>Flat by default. Compose with <code>--rounded</code>, <code>--accent</code>, <code>--inset</code>.</p>
-      <div className="sn-preview sn-preview--column">
-        <div className="sn-card">
-          <div style={{ fontWeight: 700, marginBottom: 4 }}>Default</div>
-          <div style={{ color: "var(--sn-fg-muted)" }}>One border. Flat. Square corners.</div>
-        </div>
-        <div className="sn-card sn-card--rounded">
-          <div style={{ fontWeight: 700, marginBottom: 4 }}>Rounded</div>
-          <div style={{ color: "var(--sn-fg-muted)" }}>Bigger radius for friendlier surfaces.</div>
-        </div>
-        <div className="sn-card sn-card--accent">
-          <div style={{ fontWeight: 700, marginBottom: 4, color: "var(--sn-accent)" }}>Accent</div>
-          <div style={{ color: "var(--sn-fg-muted)" }}>Use sparingly to draw attention.</div>
-        </div>
-        <div className="sn-card sn-card--inset">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
-            <span style={{ fontWeight: 700 }}>Inset + header</span>
-            <span className="sn-badge sn-badge--success">ok</span>
+      <p>One border, one radius. The variants change the fill, never the shape: raised is one step lighter than the page, inset one step darker.</p>
+      <div className="sn-preview" style={{ alignItems: "stretch" }}>
+        {[
+          ["", "Default", "Transparent. For grids on the page."],
+          ["sn-card--raised", "Raised", "One step lighter than the page."],
+          ["sn-card--inset", "Inset", "Recessed. For stats and code."],
+          ["sn-card--accent", "Accent", "Use once per page, to point."],
+        ].map(([cls, name, text]) => (
+          <div key={name} className={`sn-card ${cls}`} style={{ flex: "1 1 180px" }}>
+            <h3 style={{ margin: "0 0 4px", fontSize: "var(--sn-text-base)" }}>{name}</h3>
+            <p style={{ margin: 0, fontSize: "var(--sn-text-sm)" }}>{text}</p>
           </div>
-          <div style={{ color: "var(--sn-fg-muted)" }}>Recessed background. Pairs with header rows for stat tiles.</div>
+        ))}
+      </div>
+      <Snippets>
+        <Code lang="html">{`<div class="sn-card">…</div>
+<div class="sn-card sn-card--raised">…</div>
+<div class="sn-card sn-card--inset">…</div>
+<div class="sn-card sn-card--accent">…</div>`}</Code>
+        <Code lang="tsx">{`import { Card } from "@snowztech/ui";
+
+<Card>…</Card>
+<Card variant="raised">…</Card>
+<Card variant="accent" as="a" href="/pricing">…</Card>`}</Code>
+      </Snippets>
+
+      <h2>Table</h2>
+      <p>For data. The first column reads as the row title; <code>.sn-num</code> right-aligns numbers in mono.</p>
+      <div className="sn-preview sn-preview--column">
+        <div className="sn-table-wrap" style={{ width: "100%" }}>
+          <table className="sn-table sn-table--hover">
+            <thead><tr><th>agent</th><th>status</th><th className="sn-num">runs</th><th className="sn-num">cost</th></tr></thead>
+            <tbody>
+              <tr><td>support-bot</td><td><span className="sn-badge sn-badge--success">running</span></td><td className="sn-num">1,284</td><td className="sn-num">$12.40</td></tr>
+              <tr><td>triage</td><td><span className="sn-badge">idle</span></td><td className="sn-num">312</td><td className="sn-num">$3.05</td></tr>
+              <tr><td>nightly-report</td><td><span className="sn-badge sn-badge--danger">failed</span></td><td className="sn-num">7</td><td className="sn-num">$0.21</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <Snippets labels={["html / react"]}>
-        <Code lang="tsx">{`<div className="sn-card">…</div>
-<div className="sn-card sn-card--rounded">…</div>
-<div className="sn-card sn-card--accent">…</div>
-<div className="sn-card sn-card--inset">…</div>
+        <Code lang="html">{`<div class="sn-table-wrap">
+  <table class="sn-table sn-table--hover">
+    <thead><tr><th>agent</th><th class="sn-num">runs</th></tr></thead>
+    <tbody><tr><td>support-bot</td><td class="sn-num">1,284</td></tr></tbody>
+  </table>
+</div>`}</Code>
+      </Snippets>
 
-{/* compose */}
-<div className="sn-card sn-card--rounded sn-card--accent">…</div>`}</Code>
+      <h2>Container</h2>
+      <p>The page column: 1080px wide with a 20px gutter. <code>--narrow</code> is 720px, for text.</p>
+      <Snippets labels={["html / react"]}>
+        <Code lang="html">{`<main class="sn-container">…</main>
+<article class="sn-container sn-container--narrow">…</article>`}</Code>
+      </Snippets>
+
+      <h2>Header</h2>
+      <p>The brand on the left, a few links on the right. Put the product icon or the snowflake in the brand.</p>
+      <div className="sn-preview" style={{ display: "block", paddingBlock: 8 }}>
+        <header className="sn-header">
+          <a className="sn-brand" href="#header"><MarkSnowflake size={24} />product</a>
+          <nav className="sn-nav" aria-label="Example">
+            <a href="#header" aria-current="page">Docs</a>
+            <a href="#header">Changelog</a>
+            <a href="#header">GitHub</a>
+          </nav>
+        </header>
+      </div>
+      <Snippets labels={["html / react"]}>
+        <Code lang="html">{`<header class="sn-container sn-header">
+  <a class="sn-brand" href="/"><img src="/icon.png" alt="">Product</a>
+  <nav class="sn-nav" aria-label="Site">
+    <a href="/docs" aria-current="page">Docs</a>
+    <a href="/changelog">Changelog</a>
+    <a href="https://github.com/…">GitHub</a>
+  </nav>
+</header>`}</Code>
+      </Snippets>
+
+      <h2>Lede and fine print</h2>
+      <p>The sentence under a headline, and the small note under a button.</p>
+      <div className="sn-preview sn-preview--column">
+        <p className="sn-lede">A native macOS terminal for Claude Code, Codex and other AI coding agents.</p>
+        <p className="sn-fine">Free and open source. <a href="#lede-and-fine-print">Read the docs</a></p>
+      </div>
+      <Snippets labels={["html / react"]}>
+        <Code lang="html">{`<p class="sn-lede">A native macOS terminal for AI coding agents.</p>
+<p class="sn-fine">Free and open source. <a href="/docs">Read the docs</a></p>`}</Code>
+      </Snippets>
+
+      <h2>Nav list</h2>
+      <p>Sidebars and settings menus. Mark the current page with <code>aria-current=&quot;page&quot;</code>.</p>
+      <div className="sn-preview">
+        <nav className="sn-navlist" style={{ width: 220 }} aria-label="Example">
+          <h3 className="sn-navlist__title">Settings</h3>
+          <a href="#nav-list" aria-current="page">Profile</a>
+          <a href="#nav-list">Billing</a>
+          <a href="#nav-list">API keys</a>
+        </nav>
+      </div>
+      <Snippets labels={["html / react"]}>
+        <Code lang="html">{`<nav class="sn-navlist" aria-label="Settings">
+  <h3 class="sn-navlist__title">Settings</h3>
+  <a href="/profile" aria-current="page">Profile</a>
+  <a href="/billing">Billing</a>
+</nav>`}</Code>
+      </Snippets>
+
+      <h2>FAQ</h2>
+      <p>Questions that open in place. Plain <code>&lt;details&gt;</code>, no script.</p>
+      <div className="sn-preview" style={{ display: "block" }}>
+        <div className="sn-faq">
+          <details open>
+            <summary>Is it free?</summary>
+            <p>Yes. It is open source under the MIT license.</p>
+          </details>
+          <details>
+            <summary>Which Macs does it run on?</summary>
+            <p>Apple silicon and Intel.</p>
+          </details>
+        </div>
+      </div>
+      <Snippets labels={["html / react"]}>
+        <Code lang="html">{`<div class="sn-faq">
+  <details>
+    <summary>Is it free?</summary>
+    <p>Yes. It is open source under the MIT license.</p>
+  </details>
+</div>`}</Code>
+      </Snippets>
+
+      <h2>Footer</h2>
+      <p>One row for a small site. Add <code>__top</code> with link columns and a <code>__legal</code> row for a product site.</p>
+      <div className="sn-preview" style={{ display: "block" }}>
+        <footer className="sn-footer" style={{ marginTop: 0, border: 0, paddingBlock: 0 }}>
+          <div className="sn-footer__top">
+            <div>
+              <a className="sn-brand" href="#footer"><MarkSnowflake size={24} />product</a>
+              <p>One line about the product.</p>
+            </div>
+            <nav className="sn-footer__cols" aria-label="Example footer">
+              <div><h2>Product</h2><ul><li><a href="#footer">Download</a></li><li><a href="#footer">Changelog</a></li></ul></div>
+              <div><h2>Project</h2><ul><li><a href="#footer">GitHub</a></li><li><a href="#footer">Privacy</a></li></ul></div>
+            </nav>
+          </div>
+          <div className="sn-footer__legal">
+            <span>MIT licensed</span>
+            <span>made by <a href="https://snowztech.com">snowztech</a></span>
+          </div>
+        </footer>
+      </div>
+      <Snippets labels={["html / react"]}>
+        <Code lang="html">{`<!-- one row -->
+<footer class="sn-container sn-footer">
+  <div class="sn-footer__row">
+    <span>© 2026 snowztech</span>
+    <span class="sn-footer__links"><a href="…">GitHub</a><a href="…">Privacy</a></span>
+  </div>
+</footer>
+
+<!-- product site -->
+<footer class="sn-container sn-footer">
+  <div class="sn-footer__top">
+    <div>
+      <a class="sn-brand" href="/"><img src="/icon.png" alt="">Product</a>
+      <p>One line about the product.</p>
+    </div>
+    <nav class="sn-footer__cols" aria-label="Footer">
+      <div><h2>Product</h2><ul><li><a href="…">Download</a></li></ul></div>
+    </nav>
+  </div>
+  <div class="sn-footer__legal">
+    <span>MIT licensed</span>
+    <span>made by <a href="https://snowztech.com">snowztech</a></span>
+  </div>
+</footer>`}</Code>
       </Snippets>
     </>
   );

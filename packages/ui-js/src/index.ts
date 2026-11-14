@@ -17,4 +17,6 @@ export {
 
 export { bindToc, initTocs } from "./toc";
 
+export { bindTabs, initTabs } from "./tabs";
+
 export { init } from "./auto";

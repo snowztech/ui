@@ -1,15 +1,17 @@
 .sn-prose {
   max-width: 680px;
-  font-size: var(--sn-text-base);
-  line-height: var(--sn-leading-normal);
+  font-size: var(--sn-body-size);
+  line-height: var(--sn-leading-relaxed);
   color: var(--sn-fg-muted);
 }
 
 .sn-prose h1,
 .sn-prose h2,
 .sn-prose h3 { color: var(--sn-fg); font-weight: 600; }
-.sn-prose h1 { margin: 0 0 var(--sn-s-6); font-size: var(--sn-text-3xl); line-height: 1.25; letter-spacing: -0.02em; }
-.sn-prose h2 { margin: var(--sn-s-9) 0 var(--sn-s-4); font-size: var(--sn-text-xl); line-height: var(--sn-leading-tight); letter-spacing: -0.01em; }
+.sn-prose :is(h1, h2) { font-family: var(--sn-font-display); font-weight: var(--sn-display-weight); letter-spacing: var(--sn-display-tracking); }
+.sn-prose h3 { font-family: var(--sn-font-body); }
+.sn-prose h1 { margin: 0 0 var(--sn-s-6); font-size: var(--sn-text-3xl); line-height: 1.25; }
+.sn-prose h2 { margin: var(--sn-s-9) 0 var(--sn-s-4); font-size: var(--sn-text-xl); line-height: var(--sn-leading-tight); }
 .sn-prose h3 { margin: var(--sn-s-7) 0 var(--sn-s-2); font-size: inherit; }
 /* Keeps a heading off the top edge when a contents link jumps to it. */
 .sn-prose :is(h2, h3)[id] { scroll-margin-top: var(--sn-s-6); }
@@ -25,18 +27,19 @@
 .sn-prose code {
   padding: 1px 5px;
   border: 1px solid var(--sn-border-subtle);
-  border-radius: var(--sn-r-sm);
-  background: var(--sn-bg-elev-1);
+  border-radius: var(--sn-radius-chip);
+  background: var(--sn-bg-inset);
   color: var(--sn-fg);
-  font: inherit;
+  font-family: var(--sn-font-mono);
+  font-size: 0.88em;
   overflow-wrap: anywhere;
 }
 .sn-prose pre {
-  padding: var(--sn-s-4) 18px;
+  padding: var(--sn-s-4);
   overflow-x: auto;
   border: 1px solid var(--sn-border-subtle);
-  border-radius: var(--sn-r-lg);
-  background: var(--sn-bg-elev-1);
+  border-radius: var(--sn-radius-surface);
+  background: var(--sn-bg-inset);
   color: var(--sn-fg);
   font-size: var(--sn-text-sm);
   line-height: 1.6;
@@ -49,13 +52,13 @@
 .sn-prose hr { height: 1px; margin: var(--sn-s-9) 0; border: 0; background: var(--sn-border); }
 
 .sn-prose table { width: 100%; border-collapse: collapse; font-size: var(--sn-text-sm); }
-.sn-prose :is(th, td) { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--sn-border-subtle); }
+.sn-prose :is(th, td) { padding: var(--sn-s-3); text-align: left; vertical-align: top; border-bottom: 1px solid var(--sn-border-subtle); }
 .sn-prose thead th { color: var(--sn-fg); font-weight: 600; background: var(--sn-bg-elev-1); }
 .sn-prose tbody th { color: var(--sn-fg); font-weight: 500; }
 .sn-prose tr:last-child :is(th, td) { border-bottom: 0; }
 
 @media (max-width: 600px) {
-  .sn-prose h1 { font-size: 23px; }
-  .sn-prose h2 { margin-top: var(--sn-s-8); font-size: 18px; }
-  .sn-prose pre { padding: 14px; font-size: var(--sn-text-xs); }
+  .sn-prose h1 { font-size: var(--sn-text-2xl); }
+  .sn-prose h2 { margin-top: var(--sn-s-8); font-size: var(--sn-text-lg); }
+  .sn-prose pre { padding: var(--sn-s-3); font-size: var(--sn-text-xs); }
 }

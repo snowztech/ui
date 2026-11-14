@@ -1,12 +1,7 @@
 import * as React from "react";
+import { MarkSnowflake } from "./snowflake";
 
 type Size = "xs" | "sm" | "md" | "lg" | "xl" | number;
-
-const sizeStyle = (size: Size | undefined): React.CSSProperties | undefined =>
-  typeof size === "number" ? { ["--sn-mark-size" as string]: `${size}px` } : undefined;
-
-const sizeClass = (size: Size | undefined): string | undefined =>
-  typeof size === "string" ? `sn-mark--${size}` : undefined;
 
 const cx = (...parts: Array<string | undefined | false>) => parts.filter(Boolean).join(" ");
 
@@ -17,27 +12,8 @@ export interface SnowMarkProps {
   style?: React.CSSProperties;
 }
 
-export const SnowMark = ({ size = 48, color, className, style }: SnowMarkProps) => (
-  <svg
-    viewBox="0 0 32 32"
-    fill="currentColor"
-    className={cx("sn-mark", sizeClass(size), className)}
-    style={{ ...sizeStyle(size), color, ...style }}
-    aria-hidden="true"
-  >
-    <rect x="9" y="6" width="14" height="2.4" />
-    <polygon points="22.4,6 23,8.4 9.6,26 9,23.6" />
-    <rect x="9" y="23.6" width="14" height="2.4" />
-    <g>
-      <polygon points="16,1 18,4 16,7 14,4" />
-      <polygon points="16,25 18,28 16,31 14,28" />
-      <polygon points="27,8 28.7,11 25.5,11.5 26,8.7" />
-      <polygon points="5,8 6,8.7 6.5,11.5 3.3,11" />
-      <polygon points="27,24 26,23.3 25.5,20.5 28.7,21" />
-      <polygon points="5,24 3.3,21 6.5,20.5 6,23.3" />
-    </g>
-  </svg>
-);
+// The snowztech mark. Same art as MarkSnowflake, kept under its old name.
+export const SnowMark = ({ size = 48, ...rest }: SnowMarkProps) => <MarkSnowflake size={size} {...rest} />;
 
 export interface SnowWordmarkProps {
   size?: number;

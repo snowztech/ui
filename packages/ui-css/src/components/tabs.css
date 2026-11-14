@@ -1,0 +1,34 @@
+/* Tabs over content. Use role="tablist" / "tab" / "tabpanel" with
+   aria-selected; ui-js wires clicks and arrow keys. Links with aria-current
+   work too, for tabs that are pages. */
+.sn-tabs {
+  display: flex;
+  gap: var(--sn-s-1);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--sn-border-subtle);
+  scrollbar-width: none;
+}
+.sn-tabs > :is(button, a) {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  height: var(--sn-control-md);
+  margin-bottom: -1px;
+  padding: 0 var(--sn-s-3);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: var(--sn-radius-chip) var(--sn-radius-chip) 0 0;
+  background: none;
+  color: var(--sn-fg-muted);
+  font-family: var(--sn-font-control);
+  font-size: var(--sn-text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--sn-transition), border-color var(--sn-transition);
+}
+.sn-tabs > :is(button, a):hover { color: var(--sn-fg); }
+.sn-tabs > :is(button, a):focus-visible { outline: none; text-decoration: none; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--sn-accent) 55%, transparent); }
+.sn-tabs > :is([aria-selected="true"], [aria-current]) { color: var(--sn-fg); border-bottom-color: var(--sn-fg); }
+.sn-tabs--sm > :is(button, a) { height: var(--sn-control-sm); font-size: var(--sn-text-xs); }

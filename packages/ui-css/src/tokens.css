@@ -1,9 +1,26 @@
 /* snowztech / design tokens
-   Pure CSS custom properties. Safe to import alone (no resets, no components). */
+   Pure CSS custom properties. Safe to import alone (no resets, no components).
+
+   Every snowztech product shares these. Two optional attributes, on <html> or
+   on any section:
+     data-sn-mode="frost|powder"         frost is the default
+     data-sn-accent="ice|glacier|neutral"  the one accent color
+   Everything else stays the same, which is what makes them feel like one family. */
 
 :root {
+  /* Two modes, named after snow.
+     frost (default): crisp. Everything in JetBrains Mono. The snowztech look.
+     powder: soft, for products with a lot to read. Text, headings and buttons
+     in Geist; labels, numbers, badges, kbd and code in Geist Mono.
+     Load the fonts with fonts.css, or your own copies. */
   --sn-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --sn-font-sans: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sn-font-sans: "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --sn-font-body: var(--sn-font-mono);
+  --sn-font-display: var(--sn-font-mono);
+  --sn-font-control: var(--sn-font-mono);
+  --sn-display-weight: 500;
+  --sn-display-tracking: -0.045em;
+  --sn-body-size: var(--sn-text-base);
 
   --sn-text-2xs: 11px;
   --sn-text-xs: 12px;
@@ -15,6 +32,7 @@
   --sn-text-2xl: 24px;
   --sn-text-3xl: 28px;
   --sn-text-4xl: 36px;
+  --sn-text-5xl: 48px;
 
   --sn-leading-tight: 1.2;
   --sn-leading-normal: 1.55;
@@ -25,17 +43,38 @@
   --sn-s-7: 32px; --sn-s-8: 40px; --sn-s-9: 48px;
   --sn-s-10: 64px; --sn-s-11: 80px; --sn-s-12: 96px;
 
+  /* Deprecated: the old radius scale. Use the three radius rules below.
+     Kept for 0.8 so sites that use them keep working; removed in 0.9. */
   --sn-r-none: 0;
   --sn-r-xs: 2px;
   --sn-r-sm: 4px;
   --sn-r-md: 6px;
   --sn-r-lg: 8px;
+  --sn-r-xl: 12px;
+
+  /* Rules. Components use these, never raw values, so everything lines up.
+     Controls are things you press or type in. Surfaces hold content. Chips are
+     small inline labels. */
+  --sn-control-sm: 28px;
+  --sn-control-md: 36px;
+  --sn-control-lg: 44px;
+  --sn-radius-chip: 4px;
+  --sn-radius-control: 6px;
+  --sn-radius-surface: 10px;
+  --sn-pad-surface: var(--sn-s-5);
+  --sn-container: 1080px;
+  --sn-gutter: var(--sn-s-5);
 
   --sn-fast: 100ms;
   --sn-base: 160ms;
   --sn-ease: cubic-bezier(0.2, 0, 0, 1);
+  --sn-transition: var(--sn-fast) var(--sn-ease);
 
-  /* dark, default */
+}
+
+/* Dark is the default. [data-theme="dark"] repeats it so a section can be
+   dark inside a light page. */
+:root, [data-theme="dark"] {
   --sn-bg: #0a0a0a;
   --sn-bg-elev-1: #111111;
   --sn-bg-elev-2: #181818;
@@ -46,17 +85,10 @@
   --sn-border-subtle: #161616;
 
   --sn-fg: #e8e8e8;
-  --sn-fg-muted: #888888;
-  --sn-fg-subtle: #666666;
-  --sn-fg-faint: #444444;
+  --sn-fg-muted: #a1a1a1;
+  --sn-fg-subtle: #848484;
+  --sn-fg-faint: #646464;
   --sn-fg-inverse: #0a0a0a;
-
-  --sn-accent: #8ab4f8;
-  --sn-accent-hover: #a8c7fa;
-  --sn-accent-active: #6c9eed;
-  --sn-accent-fg: #0a0a0a;
-  --sn-accent-soft: rgba(138, 180, 248, 0.10);
-  --sn-accent-border: rgba(138, 180, 248, 0.24);
 
   --sn-success: #7fc77f;
   --sn-warning: #d4a857;
@@ -66,9 +98,10 @@
   --sn-warning-soft: rgba(212, 168, 87, 0.10);
   --sn-danger-soft:  rgba(215, 112, 112, 0.10);
 
-  --sn-shadow-sm: none;
-  --sn-shadow-md: 0 0 0 1px var(--sn-border);
-  --sn-shadow-lg: 0 0 0 1px var(--sn-border-strong);
+
+  /* Accent: each preset gives a dark and a light value. */
+  --sn-accent-on-dark: #8ab4f8;
+  --sn-accent-on-light: #2a64d6;
 }
 
 [data-theme="light"] {
@@ -82,17 +115,17 @@
   --sn-border-subtle: #ececea;
 
   --sn-fg: #161616;
-  --sn-fg-muted: #6a6a6a;
-  --sn-fg-subtle: #888888;
-  --sn-fg-faint: #b0b0ad;
+  --sn-fg-muted: #545454;
+  --sn-fg-subtle: #6b6b6b;
+  --sn-fg-faint: #8e8e8b;
   --sn-fg-inverse: #ffffff;
 
-  --sn-accent: #2a64d6;
-  --sn-accent-hover: #1f56c2;
-  --sn-accent-active: #194ba8;
-  --sn-accent-fg: #ffffff;
-  --sn-accent-soft: rgba(42, 100, 214, 0.08);
-  --sn-accent-border: rgba(42, 100, 214, 0.24);
+  --sn-success: #257a36;
+  --sn-warning: #8c5900;
+  --sn-danger: #c03a3a;
+  --sn-success-soft: rgba(37, 122, 54, 0.08);
+  --sn-warning-soft: rgba(140, 89, 0, 0.08);
+  --sn-danger-soft:  rgba(192, 58, 58, 0.08);
 }
 
 /* Opt in with <html data-theme="system"> to follow the OS. A toggle that sets
@@ -109,16 +142,80 @@
     --sn-border-subtle: #ececea;
 
     --sn-fg: #161616;
-    --sn-fg-muted: #6a6a6a;
-    --sn-fg-subtle: #888888;
-    --sn-fg-faint: #b0b0ad;
+    --sn-fg-muted: #545454;
+    --sn-fg-subtle: #6b6b6b;
+    --sn-fg-faint: #8e8e8b;
     --sn-fg-inverse: #ffffff;
 
-    --sn-accent: #2a64d6;
-    --sn-accent-hover: #1f56c2;
-    --sn-accent-active: #194ba8;
+    --sn-success: #257a36;
+    --sn-warning: #8c5900;
+    --sn-danger: #c03a3a;
+    --sn-success-soft: rgba(37, 122, 54, 0.08);
+    --sn-warning-soft: rgba(140, 89, 0, 0.08);
+    --sn-danger-soft:  rgba(192, 58, 58, 0.08);
+  }
+}
+
+/* Hover tints whatever surface it sits on, so it never shows up as a box.
+   Redeclared on [data-theme] so it follows a nested theme. */
+:root, [data-theme] {
+  --sn-hover: color-mix(in srgb, var(--sn-fg) 6%, transparent);
+  --sn-pressed: color-mix(in srgb, var(--sn-fg) 10%, transparent);
+}
+
+/* ---- mode ---- */
+[data-sn-mode="powder"] {
+  --sn-font-sans: "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --sn-font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sn-font-body: var(--sn-font-sans);
+  --sn-font-display: var(--sn-font-sans);
+  --sn-font-control: var(--sn-font-sans);
+  --sn-display-weight: 600;
+  --sn-display-tracking: -0.025em;
+  --sn-body-size: var(--sn-text-md);
+}
+/* Lets a section go back to frost inside a powder page. */
+[data-sn-mode="frost"] {
+  --sn-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sn-font-body: var(--sn-font-mono);
+  --sn-font-display: var(--sn-font-mono);
+  --sn-font-control: var(--sn-font-mono);
+  --sn-display-weight: 500;
+  --sn-display-tracking: -0.045em;
+  --sn-body-size: var(--sn-text-base);
+}
+
+/* ---- accent presets ---- */
+[data-sn-accent="ice"]  { --sn-accent-on-dark: #8ab4f8; --sn-accent-on-light: #2a64d6; }
+[data-sn-accent="glacier"] { --sn-accent-on-dark: #52c3b8; --sn-accent-on-light: #0f6e68; }
+[data-sn-accent="neutral"] { --sn-accent-on-dark: #e8e8e8; --sn-accent-on-light: #161616; }
+
+/* The accent scale is derived, so a preset (or your own two colors) is all a
+   product sets. Redeclared on [data-sn-accent] so a nested section can differ. */
+:root, [data-theme="dark"], [data-sn-accent] {
+  /* Focus: the border turns accent and a soft glow sits around it. Same on
+     every control, so focus looks like one thing. */
+  --sn-focus-ring: 0 0 0 3px color-mix(in srgb, var(--sn-accent) 35%, transparent);
+  --sn-accent: var(--sn-accent-on-dark);
+  --sn-accent-fg: #0a0a0a;
+  --sn-accent-hover: color-mix(in srgb, var(--sn-accent) 85%, #ffffff);
+  --sn-accent-active: color-mix(in srgb, var(--sn-accent) 85%, #000000);
+  --sn-accent-soft: color-mix(in srgb, var(--sn-accent) 10%, transparent);
+  --sn-accent-border: color-mix(in srgb, var(--sn-accent) 26%, transparent);
+}
+[data-theme="light"], [data-theme="light"] [data-sn-accent] {
+  --sn-accent: var(--sn-accent-on-light);
+  --sn-accent-fg: #ffffff;
+  --sn-accent-hover: color-mix(in srgb, var(--sn-accent) 85%, #000000);
+  --sn-accent-active: color-mix(in srgb, var(--sn-accent) 72%, #000000);
+  --sn-accent-soft: color-mix(in srgb, var(--sn-accent) 8%, transparent);
+}
+@media (prefers-color-scheme: light) {
+  [data-theme="system"], [data-theme="system"] [data-sn-accent] {
+    --sn-accent: var(--sn-accent-on-light);
     --sn-accent-fg: #ffffff;
-    --sn-accent-soft: rgba(42, 100, 214, 0.08);
-    --sn-accent-border: rgba(42, 100, 214, 0.24);
+    --sn-accent-hover: color-mix(in srgb, var(--sn-accent) 85%, #000000);
+    --sn-accent-active: color-mix(in srgb, var(--sn-accent) 72%, #000000);
+    --sn-accent-soft: color-mix(in srgb, var(--sn-accent) 8%, transparent);
   }
 }

@@ -7,13 +7,14 @@
   color: var(--sn-monogram-fg, var(--sn-fg));
   width: var(--sn-monogram-size, 64px);
   height: var(--sn-monogram-size, 64px);
-  border-radius: var(--sn-monogram-radius, var(--sn-r-md));
+  /* An icon tile: the corner grows with the tile. */
+  border-radius: var(--sn-monogram-radius, calc(var(--sn-monogram-size, 64px) / 10));
 }
 
-.sn-monogram--xs { --sn-monogram-size: 32px; --sn-monogram-radius: var(--sn-r-xs); }
-.sn-monogram--sm { --sn-monogram-size: 48px; --sn-monogram-radius: var(--sn-r-sm); }
-.sn-monogram--md { --sn-monogram-size: 64px; --sn-monogram-radius: var(--sn-r-md); }
-.sn-monogram--lg { --sn-monogram-size: 96px; --sn-monogram-radius: var(--sn-r-lg); }
+.sn-monogram--xs { --sn-monogram-size: 32px; }
+.sn-monogram--sm { --sn-monogram-size: 48px; }
+.sn-monogram--md { --sn-monogram-size: 64px; }
+.sn-monogram--lg { --sn-monogram-size: 96px; }
 
 .sn-monogram--inverse {
   --sn-monogram-bg: var(--sn-fg);

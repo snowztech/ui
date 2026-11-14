@@ -1,37 +1,38 @@
 .sn-file {
-  font-family: var(--sn-font-mono);
-  font-size: var(--sn-text-sm);
+  font-family: var(--sn-font-body);
+  font-size: var(--sn-text-base);
   color: var(--sn-fg-muted);
   background: transparent;
   border: 1px solid var(--sn-border-strong);
-  border-radius: var(--sn-r-xs);
+  border-radius: var(--sn-radius-control);
+  overflow: hidden;
   width: 100%;
-  height: 30px;
+  height: var(--sn-control-md);
   padding: 0;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  transition: border-color var(--sn-fast) var(--sn-ease);
+  transition: border-color var(--sn-transition), box-shadow var(--sn-transition);
 }
-.sn-file:hover { border-color: var(--sn-fg-muted); }
-.sn-file:focus-within { outline: none; border-color: var(--sn-accent); }
+.sn-file:hover { border-color: var(--sn-fg-subtle); }
+.sn-file:focus-within { outline: none; border-color: var(--sn-accent); box-shadow: var(--sn-focus-ring); }
 
 .sn-file::file-selector-button,
 .sn-file::-webkit-file-upload-button {
-  font-family: var(--sn-font-mono);
+  font-family: var(--sn-font-control);
   font-size: var(--sn-text-xs);
   color: var(--sn-fg);
   background: var(--sn-bg-elev-1);
   border: none;
   border-right: 1px solid var(--sn-border-strong);
   height: 100%;
-  padding: 0 12px;
-  margin-right: 10px;
+  padding: 0 var(--sn-s-3);
+  margin-right: var(--sn-s-3);
   cursor: pointer;
-  transition: background var(--sn-fast) var(--sn-ease);
+  transition: background var(--sn-transition);
 }
 .sn-file:hover::file-selector-button,
-.sn-file:hover::-webkit-file-upload-button { background: var(--sn-bg-elev-2); }
+.sn-file:hover::-webkit-file-upload-button { background: var(--sn-hover); }
 
 .sn-file:disabled {
   cursor: not-allowed;

@@ -1,31 +1,20 @@
 import Link from "next/link";
-import { MarkSnowflake, ChevronLeftIcon } from "@snowztech/ui";
+import { ChevronLeftIcon } from "@snowztech/ui";
 import { ThemeToggle } from "@snowztech/ui/client";
+import { ModeToggle } from "../../components/mode-toggle";
 
 export default function ExamplesLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <div style={{
-        position: "sticky", top: 0, zIndex: 50,
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        padding: "10px 20px",
-        borderBottom: "1px solid var(--sn-border)",
-        background: "var(--sn-bg)",
-        fontSize: "var(--sn-text-xs)",
-      }}>
-        <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 6, color: "var(--sn-fg-muted)" }}>
-          <ChevronLeftIcon size={14} />
-          <span>back to docs</span>
-        </Link>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 16, color: "var(--sn-fg-faint)" }}>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-            <MarkSnowflake size={14} />
-            <span>example · built with @snowztech/ui</span>
-          </span>
-          <ThemeToggle />
+    <>
+      <div className="ex-bar">
+        <Link href="/" className="sn-btn sn-btn--ghost sn-btn--sm"><ChevronLeftIcon size={14} /> back to docs</Link>
+        <div className="docs-topbar-actions">
+          <span className="sn-fine">example built with @snowztech/ui</span>
+          <ModeToggle />
+          <ThemeToggle className="sn-theme-toggle--sm" />
         </div>
       </div>
-      <div style={{ flex: 1 }}>{children}</div>
-    </div>
+      {children}
+    </>
   );
 }

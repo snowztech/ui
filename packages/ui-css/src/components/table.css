@@ -1,0 +1,33 @@
+/* Data table. Wrap in .sn-table-wrap for a border and side scroll on
+   narrow screens. Numbers line up with .sn-num. */
+.sn-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--sn-border);
+  border-radius: var(--sn-radius-surface);
+}
+.sn-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--sn-text-sm);
+}
+.sn-table :is(th, td) {
+  padding: var(--sn-s-3) var(--sn-s-4);
+  border-bottom: 1px solid var(--sn-border-subtle);
+  text-align: left;
+  vertical-align: top;
+}
+.sn-table thead th {
+  color: var(--sn-fg-subtle);
+  font-family: var(--sn-font-mono);
+  font-size: var(--sn-text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.sn-table td { color: var(--sn-fg-muted); }
+.sn-table :is(tbody th, td:first-child) { color: var(--sn-fg); font-weight: 500; }
+.sn-table tbody tr:last-child :is(th, td) { border-bottom: 0; }
+.sn-table tbody tr { transition: background var(--sn-transition); }
+.sn-table--hover tbody tr:hover { background: var(--sn-hover); }
+.sn-table .sn-num { text-align: right; font-family: var(--sn-font-mono); font-variant-numeric: tabular-nums; }
