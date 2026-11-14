@@ -172,7 +172,7 @@
   --sn-font-control: var(--sn-font-sans);
   --sn-display-weight: 600;
   --sn-display-tracking: -0.025em;
-  --sn-body-size: var(--sn-text-md);
+  --sn-body-size: 16px; /* the web's reading size; powder is for pages people read */
 }
 /* Lets a section go back to frost inside a powder page. */
 [data-sn-mode="frost"] {
