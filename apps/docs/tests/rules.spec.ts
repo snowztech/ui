@@ -52,10 +52,14 @@ for (const path of pages) {
     test(`${path}: text contrast in ${theme} ${mode}`, async ({ page }) => {
       await open(page, path, theme, mode);
       const bad = await page.evaluate(() => {
-        // rgb(…) is 0–255; color(srgb …), which color-mix() returns, is 0–1.
+        // Paint the color on a 1x1 canvas and read the pixel back, so every
+        // color syntax (rgb, color(srgb …), oklab from color-mix) becomes 0–255 RGBA.
+        const cv = document.createElement("canvas"); cv.width = cv.height = 1;
+        const cx = cv.getContext("2d", { willReadFrequently: true })!;
         const rgb = (s: string) => {
-          const n = (s.match(/[\d.]+/g) || []).map(Number);
-          return s.startsWith("color(srgb") ? [...n.slice(0, 3).map((x) => x * 255), ...n.slice(3)] : n;
+          cx.clearRect(0, 0, 1, 1); cx.fillStyle = "#000"; cx.fillStyle = s; cx.fillRect(0, 0, 1, 1);
+          const [r, g, b, a] = cx.getImageData(0, 0, 1, 1).data;
+          return [r, g, b, a / 255];
         };
         const lum = ([r, g, b]: number[]) => {
           const f = (c: number) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
@@ -65,7 +69,7 @@ for (const path of pages) {
         const bgOf = (el: Element | null): number[] => {
           for (; el; el = el.parentElement) {
             const c = rgb(getComputedStyle(el).backgroundColor);
-            if (c.length === 3 || (c.length === 4 && c[3] === 1)) return c.slice(0, 3);
+            if (c[3] === 1) return c.slice(0, 3);
           }
           return rgb(getComputedStyle(document.body).backgroundColor);
         };
@@ -79,7 +83,7 @@ for (const path of pages) {
           const cs = getComputedStyle(el);
           if (cs.visibility === "hidden" || Number(cs.opacity) < 1) continue;
           const fg = rgb(cs.color);
-          if (fg.length === 4 && fg[3] < 1) continue; // translucent text is decoration
+          if (fg[3] < 1) continue; // translucent text is decoration
           const a = lum(fg.slice(0, 3)), b = lum(bgOf(el));
           const ratio = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
           if (ratio < 4.5) out.push(`${ratio.toFixed(2)} "${node.textContent.trim().slice(0, 30)}" <${el.tagName.toLowerCase()} class="${el.className}">`);
