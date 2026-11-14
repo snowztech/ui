@@ -1,5 +1,12 @@
 # @snowztech/ui
 
+## 0.9.1
+
+### Patch Changes
+
+- Updated dependencies [e7eb7d0]
+  - @snowztech/ui-css@0.9.1
+
 ## 0.9.0
 
 ### Minor Changes
