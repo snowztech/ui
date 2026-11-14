@@ -1,5 +1,12 @@
 # @snowztech/ui-css
 
+## 0.8.1
+
+### Patch Changes
+
+- 6320ee8: Sticky headers stay stuck on long pages. `body` now uses `min-height: 100%` instead of `height: 100%`, which capped it at one screen.
+- 6320ee8: `sn-toc-layout` no longer grows wider than a phone screen when the article holds a wide code block or table.
+
 ## 0.8.0
 
 ### Minor Changes
