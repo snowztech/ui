@@ -1,5 +1,11 @@
 # @snowztech/ui-css
 
+## 0.9.1
+
+### Patch Changes
+
+- e7eb7d0: Powder body text is 16px, the standard reading size, up from 15px. Frost stays at 14px.
+
 ## 0.9.0
 
 ### Minor Changes
