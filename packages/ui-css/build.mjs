@@ -31,6 +31,7 @@ await build({
 // Standalone tokens (vars only).
 await cp(src("tokens.css"), dist("tokens.css"));
 await cp(src("base.css"), dist("base.css"));
+await cp(src("fonts.css"), dist("fonts.css"));
 
 // Per-component files for advanced users / tree-shaking.
 const components = (await readdir(src("components"))).map((f) => f.replace(/\.css$/, ""));

@@ -1,5 +1,5 @@
 .sn-toc { margin-bottom: var(--sn-s-7); font-size: var(--sn-text-sm); }
-.sn-toc details { padding: var(--sn-s-3) var(--sn-s-4); border: 1px solid var(--sn-border-subtle); border-radius: var(--sn-r-lg); }
+.sn-toc details { padding: var(--sn-s-3) var(--sn-s-4); border: 1px solid var(--sn-border-subtle); border-radius: var(--sn-radius-surface); }
 .sn-toc summary { cursor: pointer; color: var(--sn-fg); font-weight: 500; }
 .sn-toc ul { list-style: none; margin: var(--sn-s-3) 0 0; padding: 0; }
 .sn-toc li + li { margin-top: var(--sn-s-2); }
@@ -42,7 +42,7 @@
     margin-left: -1px;
     padding: 5px 0 5px var(--sn-s-4);
     border-left: 2px solid transparent;
-    transition: color var(--sn-base) var(--sn-ease), border-color var(--sn-base) var(--sn-ease);
+    transition: color var(--sn-transition), border-color var(--sn-transition);
   }
   .sn-toc-layout > .sn-toc a[aria-current] { border-left-color: var(--sn-accent); }
 }

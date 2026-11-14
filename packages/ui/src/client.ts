@@ -3,3 +3,5 @@
 export * from "./theme-toggle";
 export * from "./copy-button";
 export * from "./code-block";
+export * from "./segmented";
+export * from "./tabs";

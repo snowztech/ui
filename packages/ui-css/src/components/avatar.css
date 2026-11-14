@@ -5,7 +5,7 @@
   width: var(--sn-avatar-size, 32px);
   height: var(--sn-avatar-size, 32px);
   border-radius: 50%;
-  background: var(--sn-bg-elev-1);
+  background: var(--sn-pressed);
   color: var(--sn-fg-muted);
   font-family: var(--sn-font-mono);
   font-size: max(10px, calc(var(--sn-avatar-size, 32px) * 0.38));
@@ -15,7 +15,7 @@
   vertical-align: middle;
 }
 
-.sn-avatar--square { border-radius: var(--sn-r-xs); }
+.sn-avatar--square { border-radius: var(--sn-radius-control); }
 .sn-avatar--ring   { box-shadow: 0 0 0 1px var(--sn-border-strong); }
 
 .sn-avatar--xs { --sn-avatar-size: 20px; }

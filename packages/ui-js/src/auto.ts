@@ -4,11 +4,13 @@
 import { initCopyButtons } from "./copy-button";
 import { initThemeToggles } from "./theme-toggle";
 import { initTocs } from "./toc";
+import { initTabs } from "./tabs";
 
 export function init(root: ParentNode = document): void {
   initCopyButtons(root);
   initThemeToggles(root);
   initTocs(root);
+  initTabs(root);
 }
 
 if (typeof document !== "undefined") {

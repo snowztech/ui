@@ -2,12 +2,14 @@ import * as React from "react";
 
 type Size = "xs" | "sm" | "md" | "lg" | "xl" | number;
 
-export interface MarkProps {
+// Docs-only. Earlier logo directions for the logo lab. They are not part of
+// @snowztech/ui; the snowflake is the only mark that ships.
+type MarkProps = {
   size?: Size;
   color?: string;
   className?: string;
   style?: React.CSSProperties;
-}
+};
 
 const sizeStyle = (size: Size | undefined): React.CSSProperties | undefined =>
   typeof size === "number" ? { ["--sn-mark-size" as string]: `${size}px` } : undefined;
@@ -28,7 +30,7 @@ const baseProps = (
   ...extra,
 });
 
-export const MarkSigil = (p: MarkProps) => (
+const MarkSigil = (p: MarkProps) => (
   <svg {...baseProps(p, { fill: "currentColor" })}>
     <rect x="14.5" y="3" width="3" height="11" />
     <rect x="14.5" y="18" width="3" height="11" />
@@ -43,7 +45,7 @@ export const MarkSigil = (p: MarkProps) => (
   </svg>
 );
 
-export const MarkCrystal = (p: MarkProps) => (
+const MarkCrystal = (p: MarkProps) => (
   <svg {...baseProps(p, { fill: "none", stroke: "currentColor", strokeWidth: 2.4, strokeLinejoin: "miter", strokeLinecap: "square" })}>
     <polygon points="16,3 27,9.5 27,22.5 16,29 5,22.5 5,9.5" />
     <polygon points="16,9 22,16 16,23 10,16" />
@@ -52,7 +54,7 @@ export const MarkCrystal = (p: MarkProps) => (
   </svg>
 );
 
-export const MarkZFlake = (p: MarkProps) => (
+const MarkZFlake = (p: MarkProps) => (
   <svg {...baseProps(p, { fill: "currentColor" })}>
     <polygon points="6,5 26,5 26,9 12,9 26,23 26,27 6,27 6,23 20,23 6,9" />
     <rect x="4" y="14" width="3" height="4" />
@@ -60,7 +62,7 @@ export const MarkZFlake = (p: MarkProps) => (
   </svg>
 );
 
-export const MarkAsterisk = (p: MarkProps) => (
+const MarkAsterisk = (p: MarkProps) => (
   <svg {...baseProps(p, { fill: "currentColor" })}>
     <circle cx="16" cy="16" r="2.2" fill="none" stroke="currentColor" strokeWidth="2" />
     {[0, 60, 120].map((deg, i) => (
@@ -72,7 +74,7 @@ export const MarkAsterisk = (p: MarkProps) => (
   </svg>
 );
 
-export const MarkSlash = (p: MarkProps) => (
+const MarkSlash = (p: MarkProps) => (
   <svg {...baseProps(p, { fill: "none", stroke: "currentColor", strokeWidth: 3.2, strokeLinecap: "square", strokeLinejoin: "miter" })}>
     <line x1="16" y1="4" x2="16" y2="28" />
     <line x1="6" y1="10" x2="26" y2="22" />
@@ -81,14 +83,14 @@ export const MarkSlash = (p: MarkProps) => (
   </svg>
 );
 
-export const MarkGlyph = (p: MarkProps) => (
+const MarkGlyph = (p: MarkProps) => (
   <svg {...baseProps(p, { fill: "currentColor" })}>
     <path d="M7 5 H25 V11 H13 V14 H25 V27 H7 V21 H19 V18 H7 Z" />
   </svg>
 );
 
-export const MarkHex = (p: MarkProps) => {
-  const id = React.useId();
+const MarkHex = (p: MarkProps) => {
+  const id = React.useId().replace(/:/g, "");
   return (
     <svg {...baseProps(p)}>
       <defs>
@@ -106,24 +108,7 @@ export const MarkHex = (p: MarkProps) => {
   );
 };
 
-// The snowztech mark: a six-arm snowflake with one arm cut through the others.
-export const MarkSnowflake = (p: MarkProps) => {
-  const id = React.useId();
-  return (
-    <svg {...baseProps(p, { fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" })}>
-      <defs>
-        <mask id={id}>
-          <rect width="32" height="32" fill="white" />
-          <path d="M7 10L25 22" stroke="black" strokeWidth={4.5} />
-        </mask>
-      </defs>
-      <path mask={`url(#${id})`} d="M16 4V28M7 22L25 10M11.5 8.5L16 12L20.5 8.5M11.5 23.5L16 20L20.5 23.5" />
-      <path d="M7 10L25 22" />
-    </svg>
-  );
-};
-
-export const MarkDotgrid = (p: MarkProps) => {
+const MarkDotgrid = (p: MarkProps) => {
   const dots: React.ReactElement[] = [<circle key="c" cx="16" cy="16" r="2" fill="currentColor" />];
   for (let a = 0; a < 6; a++) {
     const ang = (a * 60 * Math.PI) / 180;
@@ -137,22 +122,13 @@ export const MarkDotgrid = (p: MarkProps) => {
   return <svg {...baseProps(p)}>{dots}</svg>;
 };
 
-export interface MarkVariant {
-  id: string;
-  name: string;
-  sub: string;
-  Mark: React.ComponentType<MarkProps>;
-  exportName: string;
-}
-
-export const markVariants: MarkVariant[] = [
-  { id: "snowflake", name: "Snowflake", sub: "cut snowflake, canonical",           Mark: MarkSnowflake, exportName: "MarkSnowflake" },
-  { id: "crystal",  name: "Crystal",    sub: "hex frame + diamond cut",            Mark: MarkCrystal,  exportName: "MarkCrystal" },
-  { id: "sigil",    name: "Sigil",      sub: "chunky bars",                        Mark: MarkSigil,    exportName: "MarkSigil" },
-  { id: "zflake",   name: "Z-Flake",    sub: "the Z of snowztech",                 Mark: MarkZFlake,   exportName: "MarkZFlake" },
-  { id: "asterisk", name: "Asterisk",   sub: "mono-native, typographic",           Mark: MarkAsterisk, exportName: "MarkAsterisk" },
-  { id: "slash",    name: "Slash-Star", sub: "stamped, signature slash",           Mark: MarkSlash,    exportName: "MarkSlash" },
-  { id: "hex",      name: "Hex-Cut",    sub: "negative-space hex tile",            Mark: MarkHex,      exportName: "MarkHex" },
-  { id: "dotgrid",  name: "Dot-Grid",   sub: "pointillist, friendly",              Mark: MarkDotgrid,  exportName: "MarkDotgrid" },
-  { id: "glyph",    name: "Glyph S",    sub: "monogram, folded ribbon",            Mark: MarkGlyph,    exportName: "MarkGlyph" },
+export const explorations: { id: string; name: string; sub: string; Mark: React.ComponentType<MarkProps> }[] = [
+  { id: "crystal",  name: "Crystal",    sub: "hex frame + diamond cut",   Mark: MarkCrystal },
+  { id: "sigil",    name: "Sigil",      sub: "chunky bars",               Mark: MarkSigil },
+  { id: "zflake",   name: "Z-Flake",    sub: "the Z of snowztech",        Mark: MarkZFlake },
+  { id: "asterisk", name: "Asterisk",   sub: "mono-native, typographic",  Mark: MarkAsterisk },
+  { id: "slash",    name: "Slash-Star", sub: "stamped, signature slash",  Mark: MarkSlash },
+  { id: "hex",      name: "Hex-Cut",    sub: "negative-space hex tile",   Mark: MarkHex },
+  { id: "dotgrid",  name: "Dot-Grid",   sub: "pointillist, friendly",     Mark: MarkDotgrid },
+  { id: "glyph",    name: "Glyph S",    sub: "monogram, folded ribbon",   Mark: MarkGlyph },
 ];

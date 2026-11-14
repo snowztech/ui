@@ -14,15 +14,15 @@
 .sn-label__required { color: var(--sn-danger); margin-left: 2px; }
 
 .sn-hint {
-  font-family: var(--sn-font-mono);
-  font-size: var(--sn-text-2xs);
+  font-family: var(--sn-font-body);
+  font-size: var(--sn-text-xs);
   color: var(--sn-fg-subtle);
   line-height: var(--sn-leading-normal);
 }
 
 .sn-error {
-  font-family: var(--sn-font-mono);
-  font-size: var(--sn-text-2xs);
+  font-family: var(--sn-font-body);
+  font-size: var(--sn-text-xs);
   color: var(--sn-danger);
   line-height: var(--sn-leading-normal);
 }

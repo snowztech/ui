@@ -1,152 +1,91 @@
 "use client";
 
 import { useState } from "react";
-import { MarkCrystal } from "@snowztech/ui";
+import { CopyButton } from "@snowztech/ui/client";
 
-const goCode = `f, _ := frost.New(frost.Config{
-  APIKey: "frost_live_...",
+const snippets = {
+  go: `f, _ := tracer.New(tracer.Config{
+  APIKey: "tr_live_...",
 })
 run := f.StartRun(ctx, "my-agent",
-  frost.WithUser("cust_42"))
-defer run.End()`;
-
-const pyCode = `f = frost.Client(api_key="frost_live_...")
+  tracer.WithUser("cust_42"))
+defer run.End()`,
+  python: `f = tracer.Client(api_key="tr_live_...")
 with f.run("my-agent", user="cust_42") as run:
     run.record_llm(
         model="gpt-4o-mini",
         prompt_tokens=1234,
         completion_tokens=56,
-    )`;
+    )`,
+};
+
+type Lang = keyof typeof snippets;
+
+const features = [
+  { n: "01", tag: "billing", title: "Cost per user", body: "Tag a run with WithUser(...) and see which customer spends the tokens." },
+  { n: "02", tag: "debug", title: "Full traces", body: "Every LLM call and tool, with timing, input and output, expanded inline." },
+  { n: "03", tag: "compliance", title: "Audit log", body: "Every plan keeps an audit log of who ran what, and when." },
+];
 
 export default function SaasLanding() {
-  const [tab, setTab] = useState("go");
+  const [lang, setLang] = useState<Lang>("go");
 
   return (
-    <div style={{
-      background: "var(--sn-bg)",
-      color: "var(--sn-fg)",
-      fontFamily: "var(--sn-font-mono)",
-      fontSize: "var(--sn-text-sm)",
-      lineHeight: "var(--sn-leading-relaxed)",
-    }}>
-      <header style={{
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        padding: "20px 56px", borderBottom: "1px solid var(--sn-border)",
-        position: "sticky", top: 0, background: "var(--sn-bg)", zIndex: 5,
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <MarkCrystal size={20} color="var(--sn-fg)" />
-          <span style={{ fontWeight: 700 }}>frost<span style={{ color: "var(--sn-accent)" }}>.</span></span>
+    <div className="ex-page">
+      <header className="ex-sticky">
+        <div className="sn-container sn-header">
+          <a className="sn-brand" href="#"><span className="sn-wordmark">tracer<span className="sn-wordmark__dot">.</span></span></a>
+          <nav className="sn-nav" aria-label="Main">
+            <a href="#">docs</a><a href="#">pricing</a><a href="#">github</a>
+            <a href="#" className="sn-btn sn-btn--secondary sn-btn--sm">sign in</a>
+          </nav>
         </div>
-        <nav style={{ display: "flex", gap: 24, color: "var(--sn-fg-muted)" }}>
-          <a>docs</a><a>pricing</a><a>compare</a><a>github</a><a>sign in</a>
-        </nav>
       </header>
 
-      <section style={{ padding: "80px 56px 64px", maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56, alignItems: "flex-start" }}>
+      <main className="sn-container">
+        <section className="ex-hero">
           <div>
-            <span className="sn-badge sn-badge--accent" style={{ marginBottom: 24 }}>v0.4 · public beta</span>
-            <h1 style={{
-              margin: "0 0 20px 0",
-              fontSize: 36, fontWeight: 700,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.15,
-            }}>
-              See your AI agents.<br />
-              Self-host or cloud.<br />
-              <span style={{ color: "var(--sn-accent)" }}>EU-native.</span>
-            </h1>
-            <p style={{ margin: "0 0 32px 0", color: "var(--sn-fg-muted)", maxWidth: 480 }}>
-              Lightweight observability for Go and Python agents.
-              No SDK lock-in. Three lines to first span.
-            </p>
-            <div style={{ display: "flex", gap: 10, marginBottom: 32 }}>
-              <button className="sn-btn sn-btn--primary sn-btn--lg">try cloud · free</button>
-              <button className="sn-btn sn-btn--secondary sn-btn--lg">self-host →</button>
+            <span className="sn-badge sn-badge--accent">v0.4 · public beta</span>
+            <h1>See what your AI agents do, and what they cost.</h1>
+            <p className="sn-lede">Lightweight observability for Go and Python agents. No SDK lock-in. Three lines to the first span.</p>
+            <div className="ex-actions">
+              <a href="#" className="sn-btn sn-btn--primary sn-btn--lg">Try it free</a>
+              <a href="#" className="sn-btn sn-btn--secondary sn-btn--lg">Self-host</a>
             </div>
-            <div style={{ display: "flex", gap: 20, color: "var(--sn-fg-faint)", fontSize: "var(--sn-text-xs)" }}>
-              <span>no credit card</span>
-              <span>·</span>
-              <span>agpl server, mit sdk</span>
-              <span>·</span>
-              <span>hosted in paris</span>
-            </div>
+            <p className="sn-fine">No credit card. AGPL server, MIT SDK.</p>
           </div>
 
-          <div style={{ border: "1px solid var(--sn-border)", background: "var(--sn-bg-inset)", borderRadius: "var(--sn-r-xs)" }}>
-            <div style={{
-              display: "flex", justifyContent: "space-between",
-              borderBottom: "1px solid var(--sn-border)",
-              fontSize: "var(--sn-text-xs)",
-            }}>
-              <div style={{ display: "flex" }}>
-                {["go", "python"].map((t) => (
-                  <button key={t} onClick={() => setTab(t)} style={{
-                    padding: "10px 16px",
-                    background: "transparent",
-                    border: "none",
-                    borderRight: "1px solid var(--sn-border)",
-                    borderBottom: tab === t ? "1px solid var(--sn-accent)" : "1px solid transparent",
-                    marginBottom: -1,
-                    color: tab === t ? "var(--sn-fg)" : "var(--sn-fg-muted)",
-                    fontFamily: "inherit",
-                    fontSize: "inherit",
-                    cursor: "pointer",
-                  }}>{t}</button>
+          <figure className="sn-code">
+            <figcaption className="sn-code__bar">
+              <div className="sn-tabs sn-tabs--sm" role="tablist" aria-label="Language">
+                {(Object.keys(snippets) as Lang[]).map((l) => (
+                  <button key={l} type="button" role="tab" aria-selected={l === lang} onClick={() => setLang(l)}>{l}</button>
                 ))}
               </div>
-              <span style={{ padding: "10px 16px", color: "var(--sn-fg-faint)" }}>copy</span>
-            </div>
-            <pre style={{
-              margin: 0, padding: 20,
-              fontSize: "var(--sn-text-xs)",
-              color: "var(--sn-fg)",
-              overflow: "auto",
-              fontFamily: "inherit",
-            }}>
-              <code>{tab === "go" ? goCode : pyCode}</code>
-            </pre>
-            <div style={{ borderTop: "1px solid var(--sn-border)", padding: "8px 16px", color: "var(--sn-fg-faint)", fontSize: "var(--sn-text-2xs)" }}>
-              3 minutes from <code style={{ color: "var(--sn-accent)" }}>go get</code> to first span
-            </div>
+              <CopyButton value={snippets[lang]} />
+            </figcaption>
+            <pre><code>{snippets[lang]}</code></pre>
+          </figure>
+        </section>
+
+        <section className="ex-section">
+          <h2 className="sn-meta">What you get</h2>
+          <div className="ex-grid">
+            {features.map((f) => (
+              <article key={f.n} className="sn-card">
+                <div className="ex-card-top"><span className="sn-meta sn-meta--subtle">{f.n}</span><span className="sn-badge">{f.tag}</span></div>
+                <h3>{f.title}</h3>
+                <p>{f.body}</p>
+              </article>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      <section style={{ padding: "32px 56px 80px", maxWidth: 1100, margin: "0 auto" }}>
-        <div className="sn-meta" style={{ marginBottom: 16 }}>what you get</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
-          {[
-            { k: "cost per user", n: "01", d: "tag a run with WithUser(...) and see exactly which customer is bleeding tokens.", tag: "billing" },
-            { k: "full traces", n: "02", d: "every llm call, every tool, timing, input, output. inline expansion. never lose context.", tag: "debug" },
-            { k: "eu + audit log", n: "03", d: "hosted in paris. gdpr ready. ai act paperwork on file. audit log on every plan.", tag: "compliance" },
-          ].map((f) => (
-            <div key={f.n} style={{ border: "1px solid var(--sn-border)", padding: 24, display: "flex", flexDirection: "column", gap: 12, borderRadius: "var(--sn-r-xs)" }}>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <span className="sn-meta">{f.n}</span>
-                <span style={{ color: "var(--sn-fg-faint)", fontSize: "var(--sn-text-2xs)" }}>{f.tag}</span>
-              </div>
-              <div style={{ fontWeight: 700 }}>{f.k}</div>
-              <div style={{ color: "var(--sn-fg-muted)" }}>{f.d}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <footer style={{
-        borderTop: "1px solid var(--sn-border)",
-        padding: "32px 56px",
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        fontSize: "var(--sn-text-xs)", color: "var(--sn-fg-muted)",
-      }}>
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <MarkCrystal size={14} color="var(--sn-fg-faint)" />
-          <span>frost</span>
-        </div>
-        <div style={{ display: "flex", gap: 24 }}>
-          <a>docs</a><a>github</a><a>status</a><a>rss</a>
-          <span style={{ color: "var(--sn-fg-faint)" }}>© 2026</span>
+      <footer className="sn-container sn-footer">
+        <div className="sn-footer__row">
+          <span>tracer · © 2026</span>
+          <span className="sn-footer__links"><a href="#">docs</a><a href="#">github</a><a href="#">status</a><a href="#">rss</a></span>
         </div>
       </footer>
     </div>

@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
       <h2 id="static">via static HTML</h2>
       <p>One <code>&lt;link&gt;</code>. Plain pages, MDX, Astro, Hugo, anywhere.</p>
       <Code lang="html">{`<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.6/dist/snowztech-ui.min.css">
+      href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.8/dist/snowztech-ui.min.css">
 
 <button class="sn-btn sn-btn--primary">Ship it</button>
 <span class="sn-pulse sn-pulse--success">

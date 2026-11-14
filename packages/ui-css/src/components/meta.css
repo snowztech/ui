@@ -1,10 +1,12 @@
 .sn-meta {
   font-family: var(--sn-font-mono);
   font-size: var(--sn-text-2xs);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--sn-fg-faint);
+  color: var(--sn-fg-muted);
 }
+.sn-meta--accent { color: var(--sn-accent); }
+.sn-meta--subtle { color: var(--sn-fg-subtle); }
 
 .sn-prompt {
   color: var(--sn-fg-faint);
