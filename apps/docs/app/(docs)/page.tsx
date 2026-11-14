@@ -17,8 +17,8 @@ export default function Home() {
 
       <Snippets labels={["react", "static html"]}>
         <Code lang="bash">{`pnpm add @snowztech/ui`}</Code>
-        <Code lang="html">{`<link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.8/dist/snowztech-ui.min.css">`}</Code>
+        <Code lang="html">{`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.9/dist/fonts.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@snowztech/ui-css@0.9/dist/snowztech-ui.min.css">`}</Code>
       </Snippets>
 
       <nav className="overview-links">

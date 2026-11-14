@@ -12,5 +12,7 @@ _legacy
 # Synced from packages/ui-css and packages/ui-js by apps/docs/scripts/sync-static.mjs
 apps/docs/public/snowztech-ui.css
 apps/docs/public/snowztech-ui.esm.js
+apps/docs/public/fonts.css
+apps/docs/public/fonts/
 test-results/
 playwright-report/
