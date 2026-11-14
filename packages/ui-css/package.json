@@ -1,6 +1,6 @@
 {
   "name": "@snowztech/ui-css",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "The snowztech CSS design system. Tokens, resets, and component classes. Framework-agnostic.",
   "license": "MIT",
   "author": {
