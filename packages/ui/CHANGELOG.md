@@ -1,5 +1,13 @@
 # @snowztech/ui
 
+## 0.8.1
+
+### Patch Changes
+
+- Updated dependencies [6320ee8]
+- Updated dependencies [6320ee8]
+  - @snowztech/ui-css@0.8.1
+
 ## 0.8.0
 
 ### Minor Changes
